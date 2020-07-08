@@ -64,6 +64,9 @@ class Adress(models.Model):
     network_reletionship = models.ForeignKey(Networks, on_delete=models.CASCADE, null=False, blank=False)
     arrow_image = models.CharField(max_length=100, default='/static/Photo/Arrow.png')
 
+    class Meta:
+        ordering = ('ip_address',)
+
     def __str__(self):
         return self.ip_address
 

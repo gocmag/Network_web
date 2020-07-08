@@ -24,7 +24,12 @@
                     <td> {{ address.ip_address }}</td>
                     <td> {{ address.description|default_if_none:"---" }}</td>
                     <td class="arrow_photos" > <img class='arrow_size' id='arrow_photo{{ address.id }}' src="{{ address.arrow_image }}"></td>
-                    <td id=changeDescription{{ address.id }} class="changeDescriptions2"> <form method="post" > {% csrf_token %} {{ form.as_p }} </form></td>
+                    <td id='changeDescription{{ address.id }}' class="changeDescriptions2">
+                        <form method="post" >
+                            {% csrf_token %} {{ form.as_p }}
+                            <input type="hidden" name="Test" value="{{ address.id }}">
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </th>

@@ -14,6 +14,7 @@ let x = $('td *').on('click',function () {
     let digits = parseInt(id.match(/\d+/));
     let newChangeDescriptionId = '#'+'changeDescription'+digits;
     $(newChangeDescriptionId).fadeIn(800);
+    console.log(digits)
 
 });
 

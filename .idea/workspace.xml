@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_main_page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/templates/Network_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/templates/vlans_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network_web/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network_web/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_ipAddress_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_ipAddress_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

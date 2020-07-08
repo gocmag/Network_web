@@ -58,11 +58,14 @@ def address(request, region_id, network_id):
         print("Получен запрос")
         network_object.delete()
         return redirect('network', region_id=region_id)
-    if request.method == 'POST' and 'delNetButton' not in request.POST:
+    if request.method == 'POST' and 'Test' in request.POST:
+        result = request.POST['Test']
         form = ipaddressForm(request.POST)
-        print('Тест пройден')
         if form.is_valid():
-            form.save()
+            new_description = form.cleaned_data.get('description')
+            Adress.objects.filter(id=result).update(description=new_description)
+
+
 
     return render(request, 'ip_address_page.html', parametrs)
 
