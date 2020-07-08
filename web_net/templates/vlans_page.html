@@ -1,0 +1,32 @@
+{% extends 'web_net/basic_table.html' %}
+    {% block script_and_style %}
+        <link rel="stylesheet" href="/static/css/vlan_style.css">
+        <script src="/static/JS/JS_for_vlan_page.js"></script>
+    {% endblock %}
+
+
+
+    {% block content %}
+        <div>
+            <button id="addVLAN" name="addVlanButton">Добавить VLAN</button>
+        </div>
+        <div id="test">
+            <form method="post" id="addForm">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Сохранить">
+            </form>
+        </div>
+    {% endblock %}
+
+    {% block table_content %}
+        <th>VLAN
+            {% for vlan in vlans_for_region  %}
+                <tr>
+                    <td>
+                        {{ vlan.vlan_id }} {{ vlan.description }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </th>
+    {% endblock %}

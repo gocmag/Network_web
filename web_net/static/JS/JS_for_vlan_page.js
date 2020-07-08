@@ -1,0 +1,1 @@
+console.log('JS for VLAN page its work!')

@@ -1,0 +1,32 @@
+{% extends 'web_net/basic_table.html' %}
+    {% block script_and_style %}
+        <link rel="stylesheet" href="/static/css/network_style.css">
+        <script src="/static/JS/JS_for_network_page.js"></script>
+    {% endblock %}
+
+    {% block content %}
+        <div id="block">
+            <button id="addNetwork" name="addNetworkButton">Добавить сеть</button>
+        </div>
+        <div id="networkForm">
+            <form method="post" id="addForm">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Сохранить">
+            </form>
+        </div>
+    {% endblock %}
+
+
+    {% block table_content %}
+        <caption>Сети</caption>
+        <th>
+            {% for network in networks_for_region  %}
+                <tr>
+                    <td> <a href={% url 'address' region_id network.id %}> {{ network.network }}</a> </td>
+                    <td>{{ network.description }} </td>
+                    <td><a href={% url 'vlans' region_id %}>{{ network.vlan_reletionship|default_if_none:"---" }}</a></td>
+                </tr>
+            {% endfor %}
+        </th>
+    {% endblock %}

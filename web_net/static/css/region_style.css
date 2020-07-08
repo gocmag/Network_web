@@ -1,0 +1,46 @@
+caption{
+    border-bottom: 5px solid maroon;
+    font-size: 75px;
+}
+
+#main_table{
+    position: relative;
+    border-right: 1px solid black;
+    bottom: 50%;
+
+}
+
+#addForm{
+    border: 2px solid black;
+    width: 20%;
+    padding: 1%;
+}
+
+caption {
+    margin-bottom: 10%;
+}
+
+td {
+    border-bottom: 1px solid black;
+    font-size: 35px;
+    padding: 15px 25px;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 200px;
+}
+
+a:hover {
+    color: #4b75de;
+    transition-delay: 50ms;
+}
+
+#addRegion{
+    position: relative;
+}
+

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/basic_style.css">
+    {% block style %}
+
+    {% endblock %}
+
+</head>
+<body>
+    <div id="header">
+        <a id="main" href="{% url 'region_page' %}">Главная</a>
+    </div>
+    {% block content %}
+    {% endblock %}
+
+
+    <script
+			  src="https://code.jquery.com/jquery-3.5.1.js"
+			  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+			  crossorigin="anonymous"></script>
+    {% block script_and_style %}
+    {% endblock %}
+</body>
+</html>

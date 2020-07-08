@@ -1,0 +1,30 @@
+body{background-color: #323d9939;}
+
+#main_table{
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    font-size: 150%;
+}
+
+#addForm{
+    border: 2px solid black;
+    width: 20%;
+    padding: 1%;
+}
+
+caption{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+
+td {
+    text-align: left;
+    border-bottom: 1px solid black;
+    padding: 15px 25px;
+}
+
+
+
+a {text-decoration: none}

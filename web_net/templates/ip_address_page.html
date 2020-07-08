@@ -1,0 +1,31 @@
+{% extends 'web_net/basic_table.html' %}
+    {% block script_and_style %}
+        <link rel="stylesheet" href="/static/css/ipAddress_style.css">
+        <script src="/static/JS/JS_for_ipAddress_page.js"></script>
+    {% endblock %}
+
+
+    {% block content %}
+        <div id="delete_network_button">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="delNetButton">Удалить сеть</button>
+            </form>
+        </div>
+
+
+
+    {% endblock %}
+
+    {% block table_content %}
+        <th>
+            {% for address in address_for_network %}
+                <tr>
+                    <td> {{ address.ip_address }}</td>
+                    <td> {{ address.description|default_if_none:"---" }}</td>
+                    <td class="arrow_photos" > <img class='arrow_size' id='arrow_photo{{ address.id }}' src="{{ address.arrow_image }}"></td>
+                    <td id=changeDescription{{ address.id }} class="changeDescriptions2"> <form method="post" > {% csrf_token %} {{ form.as_p }} </form></td>
+                </tr>
+            {% endfor %}
+        </th>
+    {% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'web_net/basic.html' %}
+
+    {% block style %}
+        <link rel="stylesheet" href="/static/css/region_style.css">
+    {% endblock %}
+
+    {% block script_and_style %}
+        <script src="/static/JS/JS_for_region_page.js"></script>
+    {% endblock %}
+
+    {% block content %}
+        <button id="addRegion" name="addRegionButton">Добавить регион</button>
+
+        <div id="regionForm">
+            <form method="post" id="addForm">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Сохранить">
+            </form>
+        </div>
+
+        <table id="main_table">
+            <caption>Регионы</caption>
+            <th>
+        {% for region in regions %}
+            <tr>
+              <td> <a id="name" href={% url 'choise_page' region.id%}> {{ region.name }}</a> </td>
+            </tr>
+        {% endfor %}
+            </th>
+        </table>
+    {% endblock %}
+

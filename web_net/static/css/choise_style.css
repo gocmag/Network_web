@@ -1,0 +1,29 @@
+.text_navigation {
+    text-decoration: none;
+    color: maroon;
+    position: relative;
+    top: 40%;
+
+}
+
+#navigation_block{
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    font-size: 50px;
+    word-spacing: 300px;
+    }
+
+.block_navigation{
+    display: inline-block;
+    border: 2px solid black;
+    width: 490px;
+
+}
+
+
+#vlan_photo {
+    width: 480px;
+}
+
