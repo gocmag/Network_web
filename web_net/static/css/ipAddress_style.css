@@ -28,6 +28,7 @@ tr:nth-child(1){
 
 td:nth-child(4){
     border-top: None;
+    border-bottom: None;
 }
 
 td:nth-child(-n+3){

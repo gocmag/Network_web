@@ -13,3 +13,23 @@ body{background-color: #323d9939;}
     width: 20%;
     padding: 1%;
 }
+
+td:nth-child(1){
+    color: white;
+    font-weight: bold;
+    text-shadow: black -1px -1px 2px;
+
+}
+
+td:nth-child(2){
+    font-family: "Times New Roman",Georgia,Serif;
+    font-weight: bold;
+}
+
+
+td {
+    text-align: left;
+    border-bottom: 1px solid black;
+    padding: 15px 35px;
+
+}

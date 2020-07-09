@@ -20,13 +20,10 @@
     {% endblock %}
 
     {% block table_content %}
-        <th>VLAN
             {% for vlan in vlans_for_region  %}
                 <tr>
-                    <td>
-                        {{ vlan.vlan_id }} {{ vlan.description }}
-                    </td>
+                    <td> {{ vlan.vlan_id }} </td>
+                    <td> {{ vlan.description }} </td>
                 </tr>
             {% endfor %}
-        </th>
     {% endblock %}

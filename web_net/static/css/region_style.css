@@ -5,8 +5,8 @@ caption{
 
 #main_table{
     position: relative;
-    border-right: 1px solid black;
-    bottom: 50%;
+    border-right: 3px solid black;
+    top: 120px;
 
 }
 
