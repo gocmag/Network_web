@@ -57,6 +57,8 @@ class Networks(models.Model):
             adress_object.save()
 
 
+
+
 class Adress(models.Model):
     id = models.AutoField(primary_key=True)
     ip_address = models.GenericIPAddressField(null=False, blank=False)

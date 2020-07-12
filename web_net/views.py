@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Region, Networks, VLAN, Adress
 from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm
+from .validators import validate
+from django.core.exceptions import ValidationError
 
 def choise_page(request, region_id):
     return render(request, 'choise_page.html',{'region_id':region_id})
@@ -9,16 +11,19 @@ def networking(request, region_id):
     networks = Networks.objects.all().order_by('network')
     networks_for_region = Networks.objects.filter(region_reletionship=region_id)
     form = NetworkForm()
+
+    if request.method == 'POST':
+        form = NetworkForm(request.POST)
+        if form.is_valid():
+            form.save()
+
     parametrs = {
                 'networks':networks,
                 'networks_for_region':networks_for_region,
                 'region_id':region_id,
                 'form': form
                 }
-    if request.method == 'POST':
-        form = NetworkForm(request.POST)
-        if form.is_valid():
-            form.save()
+
     return render(request, 'Network_page.html', parametrs)
 
 def vlans(request, region_id):
@@ -65,8 +70,9 @@ def address(request, region_id, network_id):
             new_description = form.cleaned_data.get('description')
             Adress.objects.filter(id=result).update(description=new_description)
 
-
-
     return render(request, 'ip_address_page.html', parametrs)
+
+
+
 
 
