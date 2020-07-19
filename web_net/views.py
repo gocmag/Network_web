@@ -1,3 +1,4 @@
+import ipaddress
 from django.shortcuts import render, redirect
 from .models import Region, Networks, VLAN, Adress
 from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm
@@ -15,6 +16,13 @@ def networking(request, region_id):
     if request.method == 'POST':
         form = NetworkForm(request.POST)
         if form.is_valid():
+            correct_network = form.save(commit=False)
+            network_data = form.cleaned_data.get('network')
+            correct_network_data_raw = ipaddress.ip_interface(network_data)
+            correct_network_data = correct_network_data_raw.network
+            correct_network.network = correct_network_data
+            print(correct_network_data)
+
             form.save()
 
     parametrs = {

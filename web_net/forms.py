@@ -11,7 +11,11 @@ class NetworkForm(forms.ModelForm):
     def clean_network(self):
         network_object = self.cleaned_data['network']
         all_object_network = Networks.objects.all()
-        received_subnet = ipaddress.ip_network(str(network_object))
+        try:
+            received_subnet = ipaddress.ip_network(str(network_object))
+        except ValueError:
+            correct_network_data_raw = ipaddress.ip_interface(str(network_object))
+            received_subnet = correct_network_data_raw.network
         frozen_received_subnet = set(received_subnet)
         for network_in_table in all_object_network:
             subnet_in_table = ipaddress.ip_network(str(network_in_table))
