@@ -23,7 +23,7 @@
             {% for vlan in vlans_for_region  %}
                 <tr>
                     <td> {{ vlan.vlan_id }} </td>
-                    <td> {{ vlan.description }} </td>
+                    <td> <a href="{% url 'from_vlan_to_address' region_id vlan.id%}"> {{ vlan.description }}</a> </td>
                 </tr>
             {% endfor %}
     {% endblock %}

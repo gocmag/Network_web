@@ -31,5 +31,9 @@ td {
     text-align: left;
     border-bottom: 1px solid black;
     padding: 15px 35px;
+}
 
+a {
+   color: black;
+   text-decoration: none;
 }

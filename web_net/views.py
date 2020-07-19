@@ -31,7 +31,8 @@ def vlans(request, region_id):
     form = VlanForm
     parametrs = {
         'vlans_for_region':vlans_for_region,
-        'form':form
+        'form':form,
+        'region_id':region_id,
                 }
 
     if request.method == 'POST':
@@ -71,6 +72,10 @@ def address(request, region_id, network_id):
             Adress.objects.filter(id=result).update(description=new_description)
 
     return render(request, 'ip_address_page.html', parametrs)
+
+def from_vlan_to_address (request,region_id,vlan_id):
+    network_object = Networks.objects.get(region_reletionship=region_id,vlan_reletionship=vlan_id)
+    return redirect('address', region_id=region_id,network_id=network_object.id)
 
 
 
