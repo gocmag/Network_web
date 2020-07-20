@@ -36,7 +36,8 @@ def networking(request, region_id):
 
 def vlans(request, region_id):
     vlans_for_region = VLAN.objects.filter(region_reletionship=region_id)
-    form = VlanForm
+    region_object = Region.objects.get(id=region_id)
+    form = VlanForm(initial={'region_reletionship':region_object})
     parametrs = {
         'vlans_for_region':vlans_for_region,
         'form':form,
