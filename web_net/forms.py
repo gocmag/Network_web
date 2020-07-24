@@ -49,3 +49,4 @@ class ipaddressForm(forms.ModelForm):
         model = Adress
         fields = ['description',]
         labels = {"description":""}
+

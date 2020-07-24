@@ -1,9 +1,8 @@
 import ipaddress
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from .models import Region, Networks, VLAN, Adress
 from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm
-from .validators import validate
-from django.core.exceptions import ValidationError
 
 def choise_page(request, region_id):
     return render(request, 'choise_page.html',{'region_id':region_id})
@@ -11,7 +10,9 @@ def choise_page(request, region_id):
 def networking(request, region_id):
     networks = Networks.objects.all().order_by('network')
     networks_for_region = Networks.objects.filter(region_reletionship=region_id)
-    form = NetworkForm()
+    region_object = Region.objects.get(id=region_id)
+
+    form = NetworkForm(initial={'region_reletionship':region_object})
 
     if request.method == 'POST':
         form = NetworkForm(request.POST)
@@ -85,6 +86,20 @@ def address(request, region_id, network_id):
 def from_vlan_to_address (request,region_id,vlan_id):
     network_object = Networks.objects.get(region_reletionship=region_id,vlan_reletionship=vlan_id)
     return redirect('address', region_id=region_id,network_id=network_object.id)
+
+def search_view(request):
+    q = request.GET.get('q', None)
+    searchNetworkResult = Networks.objects.filter(
+        Q(description__icontains=q) | Q(network__icontains=q)
+    )
+    searchVLANResult = VLAN.objects.filter(
+        Q(description__icontains=q) | Q(vlan_id__icontains=q)
+    )
+
+    searchAdressResult = Adress.objects.filter(
+        Q(description__icontains=q) | Q(ip_address__icontains=q)
+    )
+
 
 
 

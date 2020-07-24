@@ -12,8 +12,14 @@
     text-shadow: black 2px 3px 4px;
     font-family: "Times New Roman",Georgia,Serif;
     padding-left: 15px;
-
 }
+
+#searchForm{
+    position: relative;
+    left: 1550px;
+    bottom: 25px;
+}
+
 
 
 
