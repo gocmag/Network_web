@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/web_net/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/web_net/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/css/basic_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/basic_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/network_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/network_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/vlan_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/vlan_style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +169,9 @@
       <workItem from="1595145224783" duration="2405000" />
       <workItem from="1595154852181" duration="3158000" />
       <workItem from="1595250014343" duration="8661000" />
-      <workItem from="1595601420991" duration="3931000" />
+      <workItem from="1595601420991" duration="4587000" />
+      <workItem from="1595836838477" duration="720000" />
+      <workItem from="1595858015332" duration="2874000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлен переход из VLAN в Address">
       <created>1595147389896</created>
