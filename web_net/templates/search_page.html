@@ -1,0 +1,16 @@
+{% extends 'web_net/basic.html' %}
+
+    {% block content %}
+        <table>
+            {% for search_network in searchNetworkResult  %}
+            <tr>
+                <td> {{ searchNetworkResult }} </td>
+                <td>{{ network.description }} </td>
+                <td><a href={% url 'vlans' region_id %}>{{ network.vlan_reletionship|default_if_none:"---" }}</a></td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+
+    {% endblock %}

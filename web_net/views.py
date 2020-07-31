@@ -100,6 +100,14 @@ def search_view(request):
         Q(description__icontains=q) | Q(ip_address__icontains=q)
     )
 
+    print(searchVLANResult)
+    parametrs = {
+        'searchNetworkResult':searchNetworkResult,
+        'searchVLANResult':searchVLANResult,
+        'searchAdressResult':searchAdressResult
+    }
+
+    return render(request, 'search_page.html', parametrs)
 
 
 
