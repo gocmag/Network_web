@@ -3,8 +3,15 @@ from netfields import InetAddressField, NetManager
 import ipaddress
 
 class Region(models.Model):
+    region_type = [
+        ('core', 'Ядро'),
+        ('pat', 'ПАТ'),
+        ('other', 'Другое')
+    ]
+
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, null=False, verbose_name='Имя региона')
+    region_type = models.CharField(max_length=10, blank=False, choices=region_type)
 
     class Meta:
         verbose_name = 'Region'
@@ -23,6 +30,7 @@ class VLAN(models.Model):
     class Meta:
         ordering = ('vlan_id',)
         verbose_name = 'VLAN'
+        unique_together = ('vlan_id', 'region_reletionship')
 
     def __str__(self):
         return str(self.vlan_id)
@@ -76,11 +84,23 @@ class Adress(models.Model):
 class Tunnels(models.Model):
     id = models.AutoField(primary_key=True)
     firstTunnelName = models.CharField(max_length=30, null=False, blank=False)
+    firstTunnelDevice = models.CharField(max_length=30, null=False, blank=False)
     firstTunnelPhisicalAddress = models.GenericIPAddressField(null=False, blank=False)
     firstTunnelNetworkAddress = models.GenericIPAddressField(null=False, blank=False)
     secondTunnelName = models.CharField(max_length=30, null=False, blank=False)
+    secondTunnelDevice = models.CharField(max_length=30, null=True, blank=False)
     secondTunnelPhisicalAddress = models.GenericIPAddressField(null=False, blank=False)
     secondTunnelNetworkAddress = models.GenericIPAddressField(null=False, blank=False)
 
     class Meta:
         ordering = ('firstTunnelPhisicalAddress', 'secondTunnelPhisicalAddress')
+
+class PAT (models.Model):
+    geokod = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=10, null=False, blank=False)
+
+    class Meta:
+        ordering = ('geokod',)
+
+    def __str__(self):
+        return self.name

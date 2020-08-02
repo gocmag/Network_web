@@ -3,11 +3,12 @@ caption{
     font-size: 75px;
 }
 
-#main_table{
+.tables{
     position: relative;
     border-right: 3px solid black;
     top: 120px;
-
+    display: inline-table;
+    margin-right: 10em;
 }
 
 #addForm{

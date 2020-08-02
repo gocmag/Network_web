@@ -1,7 +1,7 @@
 import ipaddress
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from .models import Region, Networks, VLAN, Adress
+from .models import Region, Networks, VLAN, Adress, PAT
 from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm
 
 def choise_page(request, region_id):
@@ -11,11 +11,10 @@ def networking(request, region_id):
     networks = Networks.objects.all().order_by('network')
     networks_for_region = Networks.objects.filter(region_reletionship=region_id)
     region_object = Region.objects.get(id=region_id)
-
-    form = NetworkForm(initial={'region_reletionship':region_object})
+    form = NetworkForm(region_id, initial={'region_reletionship':region_object})
 
     if request.method == 'POST':
-        form = NetworkForm(request.POST)
+        form = NetworkForm(region_id, request.POST)
         if form.is_valid():
             correct_network = form.save(commit=False)
             network_data = form.cleaned_data.get('network')
@@ -52,10 +51,14 @@ def vlans(request, region_id):
     return render(request, 'vlans_page.html', parametrs)
 
 def region(request):
-    regions = Region.objects.all()
+    regions_core = Region.objects.filter(region_type='core')
+    regions_pat = Region.objects.filter(region_type='pat')
+    regions_other = Region.objects.filter(region_type='other')
     form = RegionForm()
     parametrs = {
-        'regions': regions,
+        'regions_core': regions_core,
+        'regions_pat': regions_pat,
+        'regions_other': regions_other,
         'form': form
     }
     if request.method == 'POST':
@@ -100,7 +103,7 @@ def search_view(request):
         Q(description__icontains=q) | Q(ip_address__icontains=q)
     )
 
-    print(searchVLANResult)
+
     parametrs = {
         'searchNetworkResult':searchNetworkResult,
         'searchVLANResult':searchVLANResult,

@@ -2,11 +2,12 @@ import ipaddress
 from django import forms
 from  .models import Networks, Region, VLAN, Adress
 from django.core.exceptions import ValidationError
-from django.core.exceptions import NON_FIELD_ERRORS
-from netfields import InetAddressField
-
 
 class NetworkForm(forms.ModelForm):
+
+    def __init__(self,region_id,*args,**kwargs):
+        super(NetworkForm, self).__init__(*args,**kwargs)
+        self.fields['vlan_reletionship'].queryset = VLAN.objects.filter(region_reletionship=region_id)
 
     def clean_network(self):
         network_object = self.cleaned_data['network']

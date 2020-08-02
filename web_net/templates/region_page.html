@@ -9,7 +9,6 @@
     {% endblock %}
 
     {% block content %}
-        <button id="addRegion" name="addRegionButton">Добавить регион</button>
 
         <div id="regionForm">
             <form method="post" id="addForm">
@@ -19,15 +18,34 @@
             </form>
         </div>
 
-        <table id="main_table">
-            <caption>Регионы</caption>
-            <th>
-        {% for region in regions %}
-            <tr>
-              <td> <a id="name" href={% url 'choise_page' region.id%}> {{ region.name }}</a> </td>
-            </tr>
-        {% endfor %}
-            </th>
+        <table id="core_table" class="tables">
+            <caption>Ядро</caption>
+            {% for region_core in regions_core %}
+                <tr>
+                    <td> <a id="name" href={% url 'choise_page' region_core.id%}> {{ region_core.name }}</a> </td>
+                </tr>
+            {% endfor %}
         </table>
+
+        <table id="pat_table" class="tables">
+            <caption>ПАТы</caption>
+            {% for region_pat in regions_pat %}
+                <tr>
+                    <td> <a id="name" href={% url 'choise_page' region_pat.id%}> {{ region_pat.name }}</a> </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <table id="pat_table" class="tables">
+            <caption>Другое</caption>
+            {% for region_other in regions_other %}
+                <tr>
+                    <td> <a id="name" href={% url 'choise_page' region_other.id%}> {{ region_other.name }}</a> </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+
     {% endblock %}
 

@@ -1,16 +1,48 @@
 {% extends 'web_net/basic.html' %}
 
+    {% block script_and_style %}
+        <link rel="stylesheet" href="/static/css/search_style.css">
+        <script src="/static/JS/JS_for_search_page.js"></script>
+    {% endblock %}
+
+
     {% block content %}
-        <table>
-            {% for search_network in searchNetworkResult  %}
-            <tr>
-                <td> {{ searchNetworkResult }} </td>
-                <td>{{ network.description }} </td>
-                <td><a href={% url 'vlans' region_id %}>{{ network.vlan_reletionship|default_if_none:"---" }}</a></td>
-            </tr>
-            {% endfor %}
 
-        </table>
+        {% if searchNetworkResult%}
+            <table id="network_table" class="tables">
+                <caption>Сети</caption>
+                {% for search_network in searchNetworkResult  %}
+                    <tr>
+                        <td> <a href="{% url 'address' search_network.region_reletionship_id search_network.id%}">{{ search_network.network }}</a>  </td>
+                        <td> {{ search_network.description }} </td>
+                        <td> <a href="{% url 'vlans' search_network.region_reletionship_id %}"> {{ search_network.vlan_reletionship|default_if_none:"---" }} </a> </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
 
+        {% if searchVLANResult%}
+            <table id="vlan_table" class="tables">
+            <caption>VLAN</caption>
+                {% for search_vlan in searchVLANResult %}
+                   <tr>
+                        <td> <a href="{% url 'vlans' search_vlan.region_reletionship_id %}">{{ search_vlan.vlan_id }} </a> </td>
+                        <td> {{ search_vlan.description }} </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+         {% if searchAdressResult %}
+             <table id="address_table" class="tables">
+             <caption>IP-адреса</caption>
+                {% for search_address in searchAdressResult%}
+                   <tr>
+                       <td> <a href="{% url 'address' 1 search_address.network_reletionship_id %}">{{ search_address.ip_address }} </a> </td>
+                        <td> {{ search_address.description|default_if_none:"---" }} </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
 
     {% endblock %}

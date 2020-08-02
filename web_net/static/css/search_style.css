@@ -1,0 +1,20 @@
+.tables{
+    position: relative;
+    font-size: 150%;
+    display: inline-block;
+    top: 6em;
+    margin-left: 3em;
+
+}
+caption {
+    position: center;
+}
+
+td {
+    text-align: left;
+    border-bottom: 1px solid black;
+    padding: 15px 25px;
+
+}
+
+a {text-decoration: None}
