@@ -16,6 +16,7 @@
                         <td> <a href="{% url 'address' search_network.region_reletionship_id search_network.id%}">{{ search_network.network }}</a>  </td>
                         <td> {{ search_network.description }} </td>
                         <td> <a href="{% url 'vlans' search_network.region_reletionship_id %}"> {{ search_network.vlan_reletionship|default_if_none:"---" }} </a> </td>
+                        <td> {{ search_network.region_reletionship }}</td>
                     </tr>
                 {% endfor %}
             </table>
@@ -28,6 +29,7 @@
                    <tr>
                         <td> <a href="{% url 'vlans' search_vlan.region_reletionship_id %}">{{ search_vlan.vlan_id }} </a> </td>
                         <td> {{ search_vlan.description }} </td>
+                        <td> {{ search_vlan.region_reletionship }}</td>
                     </tr>
                 {% endfor %}
             </table>
@@ -38,8 +40,9 @@
              <caption>IP-адреса</caption>
                 {% for search_address in searchAdressResult%}
                    <tr>
-                       <td> <a href="{% url 'address' 1 search_address.network_reletionship_id %}">{{ search_address.ip_address }} </a> </td>
+                        <td> <a href="{% url 'address' 1 search_address.network_reletionship_id %}">{{ search_address.ip_address }} </a> </td>
                         <td> {{ search_address.description|default_if_none:"---" }} </td>
+                        <td> {{ search_address.network_reletionship.region_reletionship }}</td>
                     </tr>
                 {% endfor %}
             </table>

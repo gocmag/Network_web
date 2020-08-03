@@ -5,6 +5,7 @@
     {% endblock %}
 
     {% block content %}
+
         <div id="block">
             <button id="addNetwork" name="addNetworkButton">Добавить сеть</button>
         </div>
@@ -19,7 +20,7 @@
 
 
     {% block table_content %}
-     <!--   <caption>Сети</caption>  -->
+            <caption>{{ region_object.name }}</caption>
 
             {% for network in networks_for_region  %}
                 <tr>

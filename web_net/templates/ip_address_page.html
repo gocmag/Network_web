@@ -18,7 +18,7 @@
     {% endblock %}
 
     {% block table_content %}
-        <th>
+                    <caption>{{ network_object.region_reletionship }} > {{ network_object.network }}</caption>
             {% for address in address_for_network %}
                 <tr>
                     <td> {{ address.ip_address }}</td>
@@ -32,5 +32,4 @@
                     </td>
                 </tr>
             {% endfor %}
-        </th>
     {% endblock %}

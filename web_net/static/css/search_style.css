@@ -1,7 +1,7 @@
 .tables{
     position: relative;
     font-size: 150%;
-    display: inline-block;
+    display: inline-table;
     top: 6em;
     margin-left: 3em;
 

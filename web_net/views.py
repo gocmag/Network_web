@@ -29,7 +29,8 @@ def networking(request, region_id):
                 'networks':networks,
                 'networks_for_region':networks_for_region,
                 'region_id':region_id,
-                'form': form
+                'region_object':region_object,
+                'form': form,
                 }
 
     return render(request, 'Network_page.html', parametrs)
@@ -72,7 +73,10 @@ def address(request, region_id, network_id):
     address_for_network = Adress.objects.filter(network_reletionship=network_id)
     form = ipaddressForm()
 
-    parametrs = {'address_for_network': address_for_network, 'form':form}
+    parametrs = {'address_for_network': address_for_network,
+                 'network_object': network_object,
+                 'form': form}
+
     if 'delNetButton' in request.POST:
         print("Получен запрос")
         network_object.delete()

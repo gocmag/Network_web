@@ -25,22 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web_net/migrations/0006_auto_20200801_1533.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/migrations/0007_auto_20200801_1815.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/migrations/0008_auto_20200801_1834.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/migrations/0009_auto_20200802_1121.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/migrations/0010_auto_20200802_1133.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/migrations/0011_auto_20200802_1139.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network_web/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network_web/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/css/basic_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/basic_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/css/region_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/region_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/choise_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/choise_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/css/search_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/search_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/templates/Network_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/Network_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/templates/region_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/region_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/templates/search_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/search_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
     </list>
@@ -214,6 +203,7 @@
       <workItem from="1596106373169" duration="2633000" />
       <workItem from="1596284507310" duration="12255000" />
       <workItem from="1596355551484" duration="8727000" />
+      <workItem from="1596479687510" duration="2445000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлен переход из VLAN в Address">
       <created>1595147389896</created>

@@ -16,7 +16,7 @@
     }
 
 .block_navigation{
-    display: inline-block;
+    display: inline-table;
     border: 2px solid black;
     width: 490px;
 
