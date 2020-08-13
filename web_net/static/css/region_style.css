@@ -45,3 +45,15 @@ a:hover {
     position: relative;
 }
 
+#geokod_table {
+    position: relative;
+    left: 90%;
+    bottom: 95em;
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+
+#geokod_table td{
+    font-size: 110%;
+    padding: 10px 20px;
+}

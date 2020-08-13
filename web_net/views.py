@@ -55,11 +55,13 @@ def region(request):
     regions_core = Region.objects.filter(region_type='core')
     regions_pat = Region.objects.filter(region_type='pat')
     regions_other = Region.objects.filter(region_type='other')
+    regions_geokod = PAT.objects.all()
     form = RegionForm()
     parametrs = {
         'regions_core': regions_core,
         'regions_pat': regions_pat,
         'regions_other': regions_other,
+        'regions_geokod': regions_geokod,
         'form': form
     }
     if request.method == 'POST':

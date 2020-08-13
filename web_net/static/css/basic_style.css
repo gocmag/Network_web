@@ -16,14 +16,14 @@
 
 #searchForm{
     position: relative;
-    left: 85%;
+    left: 89%;
     bottom: 50%;
 }
 
 
 
 
-table {
+.tables {
     border: 3px solid black;
     border-collapse: collapse;
 }
@@ -32,3 +32,6 @@ td {
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+}

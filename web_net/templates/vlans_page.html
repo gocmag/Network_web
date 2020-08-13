@@ -13,7 +13,9 @@
         <div id="test">
             <form method="post" id="addForm">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <table class="tables">
+                    {{ form.as_table }}
+                </table>
                 <input type="submit" value="Сохранить">
             </form>
         </div>

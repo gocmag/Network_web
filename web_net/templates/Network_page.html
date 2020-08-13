@@ -12,7 +12,9 @@
         <div id="networkForm">
             <form method="post" id="addForm">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <table id="addFormTable">
+                {{ form.as_table }}
+                </table>
                 <input type="submit" value="Сохранить">
             </form>
         </div>

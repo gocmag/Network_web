@@ -45,6 +45,16 @@
             {% endfor %}
         </table>
 
+        <table id="geokod_table" >
+            {% for region_geokod in regions_geokod %}
+                <tr>
+                    <td>{{ region_geokod.geokod }}</td>
+                    <td>{{ region_geokod.name }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
 
 
     {% endblock %}

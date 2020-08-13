@@ -18,6 +18,10 @@ caption{
     font-weight: bold;
 }
 
+#addFormTable td {
+    border-bottom: none;
+}
+
 td {
     text-align: left;
     border-bottom: 1px solid black;

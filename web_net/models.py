@@ -49,6 +49,7 @@ class Networks(models.Model):
     class Meta:
         ordering = ('network',)
         verbose_name = 'Network'
+        unique_together = ('network', 'region_reletionship')
 
     def __str__(self):
         return str(self.network)
