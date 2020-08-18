@@ -43,6 +43,7 @@
                         <td> <a href="{% url 'address' 1 search_address.network_reletionship_id %}">{{ search_address.ip_address }} </a> </td>
                         <td> {{ search_address.description|default_if_none:"---" }} </td>
                         <td> {{ search_address.network_reletionship.region_reletionship }}</td>
+                        <td> {{ search_address.network_reletionship.network }}</td>
                     </tr>
                 {% endfor %}
             </table>

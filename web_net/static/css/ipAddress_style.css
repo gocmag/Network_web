@@ -26,6 +26,7 @@ tr:nth-child(1){
 
 }
 
+
 td:nth-child(4){
     border-top: None;
     border-bottom: None;
@@ -45,5 +46,14 @@ td {
 
 a {text-decoration: none}
 
+#mapBlock {
+    position: relative;
+    left: 40%;
+    font-weight: bold;
+    font-size: 300%;
+}
 
+#mapBlock a {
+    color: black;
+}
 

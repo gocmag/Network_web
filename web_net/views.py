@@ -77,6 +77,7 @@ def address(request, region_id, network_id):
 
     parametrs = {'address_for_network': address_for_network,
                  'network_object': network_object,
+                 'region_id':region_id,
                  'form': form}
 
     if 'delNetButton' in request.POST:

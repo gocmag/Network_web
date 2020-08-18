@@ -13,12 +13,15 @@
             </form>
         </div>
 
+        <div id="mapBlock">
+            <a href="{% url 'choise_page' region_id %}"> {{ network_object.region_reletionship }} </a> > <a href="{% url 'network' region_id %}"> {{ network_object.network }} </a>
+        </div>
+
 
 
     {% endblock %}
 
     {% block table_content %}
-                    <caption>{{ network_object.region_reletionship }} > {{ network_object.network }}</caption>
             {% for address in address_for_network %}
                 <tr>
                     <td> {{ address.ip_address }}</td>
