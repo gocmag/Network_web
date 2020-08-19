@@ -44,6 +44,8 @@
                         <td> {{ search_address.description|default_if_none:"---" }} </td>
                         <td> {{ search_address.network_reletionship.region_reletionship }}</td>
                         <td> {{ search_address.network_reletionship.network }}</td>
+                        <td> {{ search_address.network_reletionship.description }}</td>
+                        <td> {{ search_address.network_reletionship.vlan_reletionship }}</td>
                     </tr>
                 {% endfor %}
             </table>

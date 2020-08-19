@@ -12,9 +12,11 @@ class Region(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, null=False, verbose_name='Имя региона')
     region_type = models.CharField(max_length=10, blank=False, choices=region_type)
+    geokod = models.IntegerField(blank=True)
 
     class Meta:
         verbose_name = 'Region'
+        ordering = ('geokod',)
 
     def __str__(self):
         return self.name

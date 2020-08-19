@@ -27,14 +27,7 @@
             {% endfor %}
         </table>
 
-        <table id="pat_table" class="tables">
-            <caption>ПАТы</caption>
-            {% for region_pat in regions_pat %}
-                <tr>
-                    <td> <a id="name" href={% url 'choise_page' region_pat.id%}> {{ region_pat.name }}</a> </td>
-                </tr>
-            {% endfor %}
-        </table>
+
 
         <table id="pat_table" class="tables">
             <caption>Другое</caption>
@@ -45,11 +38,11 @@
             {% endfor %}
         </table>
 
-        <table id="geokod_table" >
-            {% for region_geokod in regions_geokod %}
+        <table  id="geokod_table">
+            {% for region_pat in regions_pat %}
                 <tr>
-                    <td>{{ region_geokod.geokod }}</td>
-                    <td>{{ region_geokod.name }}</td>
+                    <td>{{ region_pat.geokod }}</td>
+                    <td> <a id="name" href={% url 'choise_page' region_pat.id%}> {{ region_pat.name }}</a> </td>
                 </tr>
             {% endfor %}
 

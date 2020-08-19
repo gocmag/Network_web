@@ -6,12 +6,11 @@
     {% block content %}
         <div id="navigation_block">
             <div id="network_block" class="block_navigation">
-                <a class="text_navigation" href="{% url 'network' region_id %}"> <img id='network_photo' src='/static/Photo/Network.png'> </a>
-                <a class="text_navigation" href="{% url 'network' region_id %}">Сети</a>
+                <a  class="text_navigation" href="{% url 'network' region_id %}"> <img id='network_photo' src='/static/Photo/Network.png'> </a>
             </div>
+
             <div id="vlan_block" class="block_navigation">
                 <a id='test' class="text_navigation" href="{% url 'vlans'  region_id%}"> <img id='vlan_photo' src='/static/Photo/VLAN.png' > </a>
-                <a id='test' class="text_navigation" href="{% url 'vlans'  region_id%}">VLANs</a>
             </div>
         </div>
     {% endblock %}

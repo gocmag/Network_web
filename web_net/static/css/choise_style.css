@@ -13,13 +13,16 @@
     left: 15%;
     font-size: 50px;
     word-spacing: 300px;
+
     }
+
+#navigation_block:hover{
+    border: black 3px;
+}
 
 .block_navigation{
     display: inline-block;
-    border: 2px solid black;
     width: 490px;
-
 }
 
 

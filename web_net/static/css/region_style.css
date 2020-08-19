@@ -47,10 +47,14 @@ a:hover {
 
 #geokod_table {
     position: relative;
-    left: 90%;
-    bottom: 95em;
+    left: 91%;
+    bottom: 28em;
     border: 3px solid black;
     border-collapse: collapse;
+}
+
+#geokod_table a {
+    width: 15%;
 }
 
 #geokod_table td{
