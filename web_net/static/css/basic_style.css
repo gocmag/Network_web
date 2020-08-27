@@ -1,3 +1,17 @@
+body{background-color: #323d9939;}
+
+caption{
+    border-bottom: 5px solid maroon;
+    font-size: 75px;
+    margin-bottom: 3%;
+}
+
+
+
+td {
+    background: ghostwhite;
+}
+
 #header{
     position: relative;
     height: 45px;
@@ -35,3 +49,4 @@ td {
 a {
     text-decoration: none;
 }
+

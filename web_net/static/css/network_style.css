@@ -1,4 +1,3 @@
-body{background-color: #323d9939;}
 
 #main_table{
     position: absolute;
@@ -13,10 +12,6 @@ body{background-color: #323d9939;}
     padding: 1%;
 }
 
-caption{
-    font-size: 35px;
-    font-weight: bold;
-}
 
 #addFormTable td {
     border-bottom: none;

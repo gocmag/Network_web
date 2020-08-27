@@ -1,6 +1,6 @@
 caption{
     border-bottom: 5px solid maroon;
-    font-size: 75px;
+    font-size: 460%;
 }
 
 .tables{
@@ -17,9 +17,6 @@ caption{
     padding: 1%;
 }
 
-caption {
-    margin-bottom: 10%;
-}
 
 td {
     border-bottom: 1px solid black;
