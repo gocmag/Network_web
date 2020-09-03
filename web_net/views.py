@@ -2,7 +2,7 @@ import ipaddress
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from .models import Region, Networks, VLAN, Adress, PAT
-from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm
+from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwork, changeLocationNetwork
 
 def choise_page(request, region_id):
     return render(request, 'choise_page.html',{'region_id':region_id})
@@ -74,10 +74,14 @@ def address(request, region_id, network_id):
     network_object = Networks.objects.get(id=network_id)
     address_for_network = Adress.objects.filter(network_reletionship=network_id)
     form = ipaddressForm()
+    changeNetworkForm = changeNetwork()
+    changeLocationForm = changeLocationNetwork()
 
     parametrs = {'address_for_network': address_for_network,
                  'network_object': network_object,
-                 'region_id':region_id,
+                 'region_id': region_id,
+                 'changeNetworkForm': changeNetworkForm,
+                 'changeLocationForm': changeLocationForm,
                  'form': form}
 
     if 'delNetButton' in request.POST:

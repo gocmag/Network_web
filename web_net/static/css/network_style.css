@@ -2,7 +2,7 @@
 #main_table{
     position: absolute;
     top: 20%;
-    left: 35%;
+    left: 38%;
     font-size: 150%;
 }
 
@@ -24,3 +24,14 @@ td {
 }
 
 a {text-decoration: none}
+
+
+#addFormTable td {
+    background: none;
+}
+
+#networkForm {
+    position: relative;
+    left: 15em;
+    bottom: 282em;
+}

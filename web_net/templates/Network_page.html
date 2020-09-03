@@ -4,11 +4,19 @@
         <script src="/static/JS/JS_for_network_page.js"></script>
     {% endblock %}
 
+
+
+
+    {% block actionButtons %}
+        <button class="actionButtons" id="addNetwork" name="addNetworkButton">Добавить сеть</button>
+    {% endblock %}
+
+
+
+
+
     {% block content %}
 
-        <div id="block">
-            <button id="addNetwork" name="addNetworkButton">Добавить сеть</button>
-        </div>
         <div id="networkForm">
             <form method="post" id="addForm">
                 {% csrf_token %}

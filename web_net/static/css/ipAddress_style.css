@@ -60,3 +60,16 @@ a {text-decoration: none}
     color: black;
 }
 
+#changeNetworkForm {
+    position: relative;
+    left: 15em;
+    bottom: 282.2em;
+}
+
+#changeLocationForm {
+    position: relative;
+    left: 15em;
+    bottom: 277.6em;
+}
+
+

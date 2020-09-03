@@ -51,3 +51,17 @@ class ipaddressForm(forms.ModelForm):
         fields = ['description',]
         labels = {"description":""}
 
+class changeNetwork(forms.ModelForm):
+    class Meta:
+        model = Networks
+        fields = ['network',]
+        labels = {'network':''}
+
+class changeLocationNetwork(forms.ModelForm):
+    class Meta:
+        model = Networks
+        fields = ['region_reletionship',]
+        labels = {'region_reletionship':''}
+
+
+

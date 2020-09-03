@@ -11,6 +11,14 @@
         <a id="main" href="{% url 'region_page' %}">Главная</a>
     </div>
 
+    <div id="actionBlock">
+        <div id="buttonsActionBlock">
+            {% block actionButtons %}
+
+            {% endblock %}
+        </div>
+    </div>
+
     {% block content %}
 
     {% endblock %}
