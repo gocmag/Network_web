@@ -40,10 +40,12 @@
 
         <table  id="geokod_table">
             {% for region_pat in regions_pat %}
-                <tr>
-                    <td>{{ region_pat.geokod }}</td>
-                    <td> <a id="name" href={% url 'choise_page' region_pat.id%}> {{ region_pat.name }}</a> </td>
-                </tr>
+                <tbody class="geokodObject">
+                    <tr>
+                        <td class="geokodObject">{{ region_pat.geokod }}</td>
+                        <td class="geokodObject"> <a id="name" href={% url 'choise_page' region_pat.id%}> {{ region_pat.name }}</a> </td>
+                    </tr>
+                </tbody>
             {% endfor %}
 
         </table>
