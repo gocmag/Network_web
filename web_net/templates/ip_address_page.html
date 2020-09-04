@@ -5,9 +5,20 @@
     {% endblock %}
 
 
+    {% block navigation %}
+        <input id="valueVlan" type="hidden" value={{ network_object.vlan_reletionship.vlan_id }}>
+
+        <div>
+            <p>Регион: {{ network_object.region_reletionship }}</p>
+            <p>Сеть: {{ network_object.network }}</p>
+            <p>VLAN: {{ network_object.vlan_reletionship|default_if_none:"" }} </p>
+        </div>
+    {% endblock %}
+
     {% block actionButtons %}
 
         <button class="actionButtons" id="changeNetwork" name="changeNetworkButton">Изменить сеть</button>
+        <button class="actionButtons" id="changeVLAN" name="changeVlanButton">Назначить VLAN</button>
         <button class="actionButtons" id="locateNetwork" name="locateNetworkButton">Смена локации сети</button>
         <form method="post">
             {% csrf_token %}
@@ -28,7 +39,15 @@
         <form method="post" id="changeLocationForm">
             {% csrf_token %}
             {{ changeLocationForm }}
+            <input type="submit" value="Сохранить" name="changeLocationFormSubmit">
         </form>
+
+        <form method="post" id="changeVlanForm">
+            {% csrf_token %}
+            {{ changeVlanForm }}
+            <input type="submit" value="Сохранить" name="changeVlanFormSubmit">
+        </form>
+
 
     {% endblock %}
 

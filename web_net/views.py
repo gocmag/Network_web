@@ -2,7 +2,7 @@ import ipaddress
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from .models import Region, Networks, VLAN, Adress, PAT
-from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwork, changeLocationNetwork
+from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwork, changeLocationNetwork, changeVlan
 
 def choise_page(request, region_id):
     return render(request, 'choise_page.html',{'region_id':region_id})
@@ -72,16 +72,20 @@ def region(request):
 
 def address(request, region_id, network_id):
     network_object = Networks.objects.get(id=network_id)
+    current_network_object = Networks.objects.filter(id=network_id)
     address_for_network = Adress.objects.filter(network_reletionship=network_id)
+    resetPage = redirect('address', region_id=network_object.region_reletionship_id, network_id=network_id)
     form = ipaddressForm()
     changeNetworkForm = changeNetwork()
     changeLocationForm = changeLocationNetwork()
+    changeVlanForm = changeVlan(region_id)
 
     parametrs = {'address_for_network': address_for_network,
                  'network_object': network_object,
                  'region_id': region_id,
                  'changeNetworkForm': changeNetworkForm,
                  'changeLocationForm': changeLocationForm,
+                 'changeVlanForm': changeVlanForm,
                  'form': form}
 
     if 'delNetButton' in request.POST:
@@ -94,6 +98,20 @@ def address(request, region_id, network_id):
         if form.is_valid():
             new_description = form.cleaned_data.get('description')
             Adress.objects.filter(id=result).update(description=new_description)
+
+    if 'changeLocationFormSubmit' in request.POST:
+        changeLocationForm = changeLocationNetwork(request.POST)
+        if changeLocationForm.is_valid():
+            newLoaction = request.POST['region_reletionship']
+            current_network_object.update(region_reletionship=newLoaction)
+            return resetPage
+
+    if 'changeVlanFormSubmit' in request.POST:
+        changeVlanForm = changeVlan(region_id, request.POST)
+        if changeVlanForm.is_valid():
+            newVlan = request.POST['vlan_reletionship']
+            current_network_object.update(vlan_reletionship=newVlan)
+            return resetPage
 
     return render(request, 'ip_address_page.html', parametrs)
 

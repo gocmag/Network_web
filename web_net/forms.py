@@ -63,5 +63,15 @@ class changeLocationNetwork(forms.ModelForm):
         fields = ['region_reletionship',]
         labels = {'region_reletionship':''}
 
+class changeVlan(forms.ModelForm):
+    def __init__(self,region_id,*args,**kwargs):
+        super(changeVlan, self).__init__(*args,**kwargs)
+        self.fields['vlan_reletionship'].queryset = VLAN.objects.filter(region_reletionship=region_id)
+
+    class Meta:
+        model = Networks
+        fields = ['vlan_reletionship',]
+        labels = {'vlan_reletionship':''}
+
 
 

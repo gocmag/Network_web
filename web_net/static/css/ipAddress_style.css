@@ -63,13 +63,17 @@ a {text-decoration: none}
 #changeNetworkForm {
     position: relative;
     left: 15em;
-    bottom: 282.2em;
+    bottom: 275.7em;
 }
 
 #changeLocationForm {
     position: relative;
     left: 15em;
-    bottom: 277.6em;
+    bottom: 267em;
 }
 
-
+#changeVlanForm {
+    position: relative;
+    left: 15em;
+    bottom: 271.3em;
+}
