@@ -41,7 +41,7 @@ class VLAN(models.Model):
 
 class Networks(models.Model):
     id = models.AutoField(primary_key=True)
-    network = InetAddressField(null=False, verbose_name='Сеть')
+    network = InetAddressField(null=False, unique=True, verbose_name='Сеть')
     description = models.CharField(max_length=200, null=True, blank=True, verbose_name='Описание')
     region_reletionship = models.ForeignKey(Region, on_delete=models.CASCADE, verbose_name='Регион')
     vlan_reletionship = models.ForeignKey(VLAN, on_delete=models.SET_NULL, null=True, blank=True,
@@ -51,7 +51,7 @@ class Networks(models.Model):
     class Meta:
         ordering = ('network',)
         verbose_name = 'Network'
-        unique_together = ('network', 'region_reletionship')
+        unique_together = ('network', 'vlan_reletionship')
 
     def __str__(self):
         return str(self.network)
