@@ -8,10 +8,10 @@
     {% block navigation %}
         <input id="valueVlan" type="hidden" value={{ network_object.vlan_reletionship.vlan_id }}>
 
-        <div>
-            <p>Регион: {{ network_object.region_reletionship }}</p>
-            <p>Сеть: {{ network_object.network }}</p>
-            <p>VLAN: {{ network_object.vlan_reletionship|default_if_none:"" }} </p>
+        <div id="regionData">
+            <p>Регион: <a href={% url 'choise_page' region_id %}> {{ network_object.region_reletionship }}</a> </p>
+            <p>Сеть: <a href={% url 'network' region_id %}> {{ network_object.network }} </a> </p>
+            <p>VLAN: <a href={% url 'vlans' region_id %}> {{ network_object.vlan_reletionship|default_if_none:"" }} </a> </p>
         </div>
     {% endblock %}
 
@@ -20,9 +20,9 @@
         <button class="actionButtons" id="changeNetwork" name="changeNetworkButton">Изменить сеть</button>
         <button class="actionButtons" id="changeVLAN" name="changeVlanButton">Назначить VLAN</button>
         <button class="actionButtons" id="locateNetwork" name="locateNetworkButton">Смена локации сети</button>
-        <form method="post">
+        <form method="post" id="delButton">
             {% csrf_token %}
-            <button type="submit" name="delNetButton">Удалить сеть</button>
+            <button type="submit"  name="delNetButton">Удалить сеть</button>
         </form>
 
     {% endblock %}
@@ -34,6 +34,7 @@
         <form method="post" id="changeNetworkForm">
             {% csrf_token %}
             {{ changeNetworkForm }}
+        <input type="submit" value="Сохранить" name="changeNetworkFormSubmit">
         </form>
 
         <form method="post" id="changeLocationForm">

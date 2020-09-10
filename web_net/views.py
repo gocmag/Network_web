@@ -43,6 +43,7 @@ def vlans(request, region_id):
         'vlans_for_region':vlans_for_region,
         'form':form,
         'region_id':region_id,
+        'region_object':region_object
                 }
 
     if request.method == 'POST':
@@ -72,11 +73,12 @@ def region(request):
 
 def address(request, region_id, network_id):
     network_object = Networks.objects.get(id=network_id)
-    current_network_object = Networks.objects.filter(id=network_id)
+    current_network_objects = Networks.objects.filter(id=network_id)
+    current_network_object = Networks.objects.get(id=network_id)
     address_for_network = Adress.objects.filter(network_reletionship=network_id)
     resetPage = redirect('address', region_id=network_object.region_reletionship_id, network_id=network_id)
     form = ipaddressForm()
-    changeNetworkForm = changeNetwork()
+    changeNetworkForm = changeNetwork(current_network_object)
     changeLocationForm = changeLocationNetwork()
     changeVlanForm = changeVlan(region_id)
 
@@ -89,7 +91,6 @@ def address(request, region_id, network_id):
                  'form': form}
 
     if 'delNetButton' in request.POST:
-        print("Получен запрос")
         network_object.delete()
         return redirect('network', region_id=region_id)
     if request.method == 'POST' and 'Test' in request.POST:
@@ -103,21 +104,35 @@ def address(request, region_id, network_id):
         changeLocationForm = changeLocationNetwork(request.POST)
         if changeLocationForm.is_valid():
             newLoaction = request.POST['region_reletionship']
-            current_network_object.update(region_reletionship=newLoaction)
+            current_network_objects.update(region_reletionship=newLoaction)
             return resetPage
 
     if 'changeVlanFormSubmit' in request.POST:
         changeVlanForm = changeVlan(region_id, request.POST)
         if changeVlanForm.is_valid():
             newVlan = request.POST['vlan_reletionship']
-            current_network_object.update(vlan_reletionship=newVlan)
+            current_network_objects.update(vlan_reletionship=newVlan)
             return resetPage
+
+    if 'changeNetworkFormSubmit' in request.POST:
+        changeNetworkForm = changeNetwork(current_network_object, request.POST)
+        if changeNetworkForm.is_valid():
+            new_network = request.POST['network']
+            correct_network = changeNetworkForm.save(commit=False)
+            network_data = changeNetworkForm.cleaned_data.get('network')
+            correct_network_data_raw = ipaddress.ip_interface(network_data)
+            correct_network_data = correct_network_data_raw.network
+            correct_network.network = correct_network_data
+
+            current_network_objects.update(network=correct_network_data)
+            return resetPage
+          #  changeNetworkForm.save()
 
     return render(request, 'ip_address_page.html', parametrs)
 
 def from_vlan_to_address (request,region_id,vlan_id):
-    network_object = Networks.objects.get(region_reletionship=region_id,vlan_reletionship=vlan_id)
-    return redirect('address', region_id=region_id,network_id=network_object.id)
+    network_object = Networks.objects.get(region_reletionship=region_id, vlan_reletionship=vlan_id)
+    return redirect('address', region_id=region_id, network_id=network_object.id)
 
 def search_view(request):
     q = request.GET.get('q', None)

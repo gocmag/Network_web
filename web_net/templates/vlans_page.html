@@ -6,10 +6,22 @@
 
 
 
+    {% block navigation %}
+
+        <p>Регион: <a href={% url 'network' region_id %}> {{ region_object.name }}</a> </p>
+
+    {% endblock %}
+
+
+
+    {% block actionButtons %}
+        <button class="actionButtons" id="addVLAN" name="addVlanButton">Добавить VLAN</button>
+    {% endblock %}
+
+
+
     {% block content %}
-        <div>
-            <button id="addVLAN" name="addVlanButton">Добавить VLAN</button>
-        </div>
+
         <div id="test">
             <form method="post" id="addForm">
                 {% csrf_token %}
