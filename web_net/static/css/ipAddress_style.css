@@ -80,4 +80,10 @@ a {text-decoration: none}
 
 #regionData {
     font-size: 150%;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+    line-height: 100%;
+}
+
+#delNetButton {
+    background: #d40d0d;
 }

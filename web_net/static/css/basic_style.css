@@ -1,4 +1,7 @@
-body{background-color: #323d9939;}
+body{
+    background-color: #323d9939;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+}
 
 caption{
     border-bottom: 5px solid maroon;
@@ -6,6 +9,10 @@ caption{
     margin-bottom: 3%;
 }
 
+
+button:hover {
+    cursor: pointer;
+}
 
 td {
     background: ghostwhite;
@@ -51,6 +58,7 @@ a {
     width: 12em;
     height: 300em;
     border-right: 1px solid black;
+
 }
 
 
@@ -61,4 +69,18 @@ a {
 
 .actionButtons {
     margin-bottom: 25%;
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: #4676D7;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 16px;
+    transition: 0.7s;
+}
+
+.actionButtons:hover {
+    -webkit-box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+    box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
 }

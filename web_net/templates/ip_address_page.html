@@ -22,7 +22,7 @@
         <button class="actionButtons" id="locateNetwork" name="locateNetworkButton">Смена локации сети</button>
         <form method="post" id="delButton">
             {% csrf_token %}
-            <button type="submit"  name="delNetButton">Удалить сеть</button>
+            <button type="submit" class="actionButtons" id="delNetButton">Удалить сеть</button>
         </form>
 
     {% endblock %}
