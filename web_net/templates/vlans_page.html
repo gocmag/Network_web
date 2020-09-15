@@ -7,8 +7,9 @@
 
 
     {% block navigation %}
-
-        <p>Регион: <a href={% url 'network' region_id %}> {{ region_object.name }}</a> </p>
+        <div id="regionData">
+            <p>Регион: <a href={% url 'network' region_id %}> {{ region_object.name }}</a> </p>
+        </div>
 
     {% endblock %}
 
@@ -38,6 +39,13 @@
                 <tr>
                     <td> {{ vlan.vlan_id }} </td>
                     <td> <a href="{% url 'from_vlan_to_address' region_id vlan.id%}"> {{ vlan.description }}</a> </td>
+                    <td class="trashImage">
+                        <form class="trashForm" method="post" name="trashForm" >
+                            {% csrf_token %}
+                            <input type="hidden" name="currentVlanID" value="{{ vlan.id }}">
+                            <button class="trashButtons" type="submit" name="trashButton"><img class="trashSize" src="{{ vlan.trash_image }}"> </button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
     {% endblock %}

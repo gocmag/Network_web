@@ -50,6 +50,11 @@ def vlans(request, region_id):
         form = VlanForm(request.POST)
         if form.is_valid():
             form.save()
+
+    if "trashButton" in request.POST:
+        currentVlanID = int(request.POST.get('currentVlanID'))
+        VLAN.objects.get(id=currentVlanID).delete()
+
     return render(request, 'vlans_page.html', parametrs)
 
 def region(request):

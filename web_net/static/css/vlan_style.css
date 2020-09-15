@@ -43,3 +43,20 @@ a {
    text-decoration: none;
 }
 
+.trashImage:hover {
+    cursor: pointer;
+}
+
+.trashSize {
+    width: 2.3em;
+}
+
+.trashButtons {
+    background: none;
+    border: none;
+}
+
+#regionData {
+    font-size: 150%;
+    line-height: 100%;
+}

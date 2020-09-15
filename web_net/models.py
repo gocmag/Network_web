@@ -27,6 +27,7 @@ class VLAN(models.Model):
     id = models.AutoField(primary_key=True)
     vlan_id = models.IntegerField(verbose_name='VLAN')
     description = models.CharField(max_length=100, verbose_name='Описание', null=True, blank=True)
+    trash_image = models.CharField(max_length=100, default='/static/Photo/Trash2.png')
     region_reletionship = models.ForeignKey(Region, on_delete=models.CASCADE, verbose_name='Регион')
 
     class Meta:
