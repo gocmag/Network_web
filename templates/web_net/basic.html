@@ -12,12 +12,15 @@
 </head>
 <body>
     <div id="header">
-        <a id="main" href="{% url 'region_page' %}">Главная</a>
+        <div id="mainBlock">
+            <a id="main" href="{% url 'region_page' %}">Главная</a>
+        </div>
+
 
         <form method="get" id="searchForm" action="{% url "search_view" %} ">
             <input type="search" id="q" name="q">
         </form>
-
+        <a id="exitButton" href="{% url 'logout' %}"> Выйти </a>
     </div>
 
     {% block content %}

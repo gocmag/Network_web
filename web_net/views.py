@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.db.models import Q
 from .models import Region, Networks, VLAN, Adress, PAT
 from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwork, changeLocationNetwork, changeVlan
+from django.contrib.auth.decorators import login_required
 
 def choise_page(request, region_id):
     return render(request, 'choise_page.html',{'region_id':region_id})
@@ -57,6 +58,8 @@ def vlans(request, region_id):
 
     return render(request, 'vlans_page.html', parametrs)
 
+
+@login_required(login_url='/accounts/login/')
 def region(request):
     regions_core = Region.objects.filter(region_type='core')
     regions_pat = Region.objects.filter(region_type='pat')
