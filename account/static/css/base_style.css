@@ -1,3 +1,53 @@
+body{
+    background-color: #323d9939;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+}
+
 #loginBlock {
-    color: #d40d0d;
+    position: relative;
+    left: 40%;
+    top: 15em;
+    width: 25%;
+    height: 20em;
+    border: 1px solid black;
+    box-shadow: 1px 1px 7px;
+}
+
+
+
+#loginBlockContent{
+    margin-left: 30%;
+    margin-top: 18%;
+    font-size: 1.5em;
+}
+
+#loginButton {
+    margin-bottom: 25%;
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: #4676D7;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 16px;
+    transition: 0.7s;
+}
+
+#loginButton:hover {
+    -webkit-box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+    box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+    cursor: pointer;
+}
+
+#loginBlockContent #loginButton {
+    margin-left: 19%;
+    margin-top: 10%;
+}
+
+#PhotoBlock {
+    position: relative;
+    left: 52em;
+    bottom:20em
+
 }

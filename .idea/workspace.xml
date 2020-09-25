@@ -25,14 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/account/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network_web/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network_web/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network_web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network_web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/web_net/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/web_net/basic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/static/css/base_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/account/static/css/base_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/css/basic_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/basic_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
     </list>
@@ -239,6 +234,8 @@
       <workItem from="1600150514994" duration="8043000" />
       <workItem from="1600420804068" duration="3376000" />
       <workItem from="1600696945538" duration="718000" />
+      <workItem from="1600929789156" duration="632000" />
+      <workItem from="1601014979239" duration="9802000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлен переход из VLAN в Address">
       <created>1595147389896</created>

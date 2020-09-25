@@ -1,24 +1,35 @@
 {% extends 'base.html' %}
     {% block content %}
     <div id="loginBlock">
-        <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-            <table>
+        <div id="loginBlockContent">
+            <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+                <table>
+                    <div class="loginBlockStr">
+                        <tr>
+                            <td>{{ form.username.label_tag }}</td>
+                         </tr>
+                        <tr>
+                          <td>{{ form.username }}</td>
+                        </tr>
+                    </div>
+                    <div class="loginBlockStr">
+                        <tr>
+                            <td>{{ form.password.label_tag }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ form.password }}</td>
+                        </tr>
+                    </div>
+                </table>
 
-                <tr>
-                  <td>{{ form.username.label_tag }}</td>
-                  <td>{{ form.username }}</td>
-                </tr>
-
-                <tr>
-                  <td>{{ form.password.label_tag }}</td>
-                  <td>{{ form.password }}</td>
-                </tr>
-            </table>
-
-            <input type="submit" value="Войти" />
-            <input type="hidden" name="next" value="{{ next }}" />
-        </form>
-      </div>
+                <input id="loginButton" type="submit" value="Войти" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </div>
+        <div id="PhotoBlock">
+            <img src="/static/Photo/RGC_logo.png"></p>
+        </div>
     {% endblock %}
 
