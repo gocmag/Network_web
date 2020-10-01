@@ -11,6 +11,17 @@
 
 </head>
 <body>
+    {% if messages %}
+        <ul class="messages" id="messageBlock">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class="close" id="closeMessageButton">✖</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <div id="header">
         <div id="mainBlock">
             <a id="main" href="{% url 'region_page' %}">Главная</a>
@@ -31,6 +42,7 @@
 			  src="https://code.jquery.com/jquery-3.5.1.js"
 			  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 			  crossorigin="anonymous"></script>
+    <script src="/static/JS/JS_for_basic_page.js"></script>
     {% block script_and_style %}
     {% endblock %}
 </body>

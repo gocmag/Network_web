@@ -78,8 +78,14 @@ a {text-decoration: none}
     bottom: 271.3em;
 }
 
+#changeDescriptionForm {
+    position: relative;
+    left: 15em;
+    bottom: 255.3em;
+}
+
 #regionData {
-    font-size: 150%;
+    font-size: 125%;
     line-height: 100%;
 }
 

@@ -2,10 +2,10 @@ const deleteButtons = document.getElementsByClassName('trashForm')
 
 ///////////////////////////////////////////////////////////////////////////////
 function checkDelete(e) {
-    alert("YES")
- //   if (!confirm('Вы уверены что хотите удалить сеть ?')) {
- //       e.preventDefault()
- //   }
+    //alert("YES")
+    if (!confirm('Вы уверены что хотите удалить VLAN ?')) {
+        e.preventDefault()
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16,4 +16,8 @@ $('#addVLAN').on('click',function () {
     $('#addForm').slideToggle(500);
 });
 
-//deleteButtons.addEventListener('submit', checkDelete, false)
+Array.from(deleteButtons).forEach(function (deleteButton){
+     deleteButton.addEventListener('submit', checkDelete, false)
+})
+
+

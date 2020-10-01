@@ -8,8 +8,22 @@
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:bold' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+    {% if messages %}
+            {% for message in messages %}
+                <div class="{{ message.tags }}" id="messageBlock">
+                    {{ message|safe }}
+                        <a href="#" class="close" id="closeMessageButton">✖</a>
+                </div>
+
+            {% endfor %}
+    {% endif %}
+
+
     <div id="header">
-        <a id="main" href="{% url 'region_page' %}">Главная</a>
+        <div id="mainBlock">
+            <a id="main" href="{% url 'region_page' %}">Главная</a>
+        </div>
     </div>
 
     <div id="actionBlock">
@@ -42,6 +56,7 @@
 			  crossorigin="anonymous">
 
     </script>
+    <script src="/static/JS/JS_for_basic_page.js"></script>
     {% block script_and_style %}
     {% endblock %}
 </body>

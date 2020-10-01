@@ -33,7 +33,6 @@ class NetworkForm(forms.ModelForm):
         model = Networks
         fields = '__all__'
 
-
 class RegionForm(forms.ModelForm):
     class Meta:
         model = Region
@@ -42,16 +41,13 @@ class RegionForm(forms.ModelForm):
 class VlanForm(forms.ModelForm):
     class Meta:
         model = VLAN
-        fields = '__all__'
+        exclude = ['trash_image',]
 
 class ipaddressForm(forms.ModelForm):
     class Meta:
         model = Adress
         fields = ['description',]
         labels = {"description":""}
-
-
-
 
 class changeNetwork(forms.ModelForm):
     def __init__(self,current_network_object,*args,**kwargs):
@@ -115,15 +111,19 @@ class changeNetwork(forms.ModelForm):
         fields = ['network',]
         labels = {'network':''}
 
-
-
-
 class changeLocationNetwork(forms.ModelForm):
 
     class Meta:
         model = Networks
         fields = ['region_reletionship',]
         labels = {'region_reletionship':''}
+
+class changeDescriptionNetwork(forms.ModelForm):
+
+    class Meta:
+        model = Networks
+        fields = ['description',]
+        labels = {'description':''}
 
 class changeVlan(forms.ModelForm):
     def __init__(self,region_id,*args,**kwargs):
@@ -135,6 +135,8 @@ class changeVlan(forms.ModelForm):
         model = Networks
         fields = ['vlan_reletionship',]
         labels = {'vlan_reletionship':''}
+
+
 
 
 

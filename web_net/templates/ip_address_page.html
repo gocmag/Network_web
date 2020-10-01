@@ -12,6 +12,7 @@
             <p>Регион: <a href={% url 'choise_page' region_id %}> {{ network_object.region_reletionship }}</a> </p>
             <p>Сеть: <a href={% url 'network' region_id %}> {{ network_object.network }} </a> </p>
             <p>VLAN: <a href={% url 'vlans' region_id %}> {{ network_object.vlan_reletionship|default_if_none:"" }} </a> </p>
+            <p>Имя сети: {{ network_object.description }}</p>
         </div>
     {% endblock %}
 
@@ -20,6 +21,7 @@
         <button class="actionButtons" id="changeNetwork" name="changeNetworkButton">Изменить сеть</button>
         <button class="actionButtons" id="changeVLAN" name="changeVlanButton">Назначить VLAN</button>
         <button class="actionButtons" id="locateNetwork" name="locateNetworkButton">Смена локации сети</button>
+        <button class="actionButtons" id="descriptionNetwork" name="descriptionNetworkButton">Смена имени сети</button>
         <form method="post" id="delButton">
             {% csrf_token %}
             <button type="submit" class="actionButtons" id="delNetButton">Удалить сеть</button>
@@ -41,6 +43,12 @@
             {% csrf_token %}
             {{ changeLocationForm }}
             <input type="submit" value="Сохранить" name="changeLocationFormSubmit">
+        </form>
+
+        <form method="post" id="changeDescriptionForm">
+            {% csrf_token %}
+            {{ changeDescriptionNetwork }}
+            <input type="submit" value="Сохранить" name="changeDescriptionFormSubmit">
         </form>
 
         <form method="post" id="changeVlanForm">

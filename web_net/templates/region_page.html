@@ -10,13 +10,6 @@
 
     {% block content %}
 
-        <div id="regionForm">
-            <form method="post" id="addForm">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Сохранить">
-            </form>
-        </div>
 
         <table id="core_table" class="tables">
             <caption>Ядро</caption>

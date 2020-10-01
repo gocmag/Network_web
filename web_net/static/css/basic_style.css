@@ -36,7 +36,7 @@ td {
     color: white;
     font-size: 180%;
     text-shadow: black 2px 3px 4px;
-    font-family: "Times New Roman",Georgia,Serif;
+
 }
 
 #searchForm{
@@ -48,7 +48,8 @@ td {
 #exitButton {
     position: relative;
     left: 96.5%;
-    bottom: 46%;
+    bottom: 1.6em;
+    color: black;
 }
 
 #exitButton:hover {
@@ -79,7 +80,7 @@ a {
 
 #buttonsActionBlock {
     position: relative;
-    top: 6%;
+    top: 3%;
 }
 
 .actionButtons {
@@ -98,4 +99,26 @@ a {
     -webkit-box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
     -moz-box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
     box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+}
+
+.success {
+    height: 2.5em;
+    line-height: 2.5em;
+    background-color: green;
+    text-align: center;
+    color: navajowhite;
+}
+
+.error {
+    height: 2.5em;
+    line-height: 2.5em;
+    background-color: firebrick;
+    text-align: center;
+    color: navajowhite;
+}
+
+.close {
+    color: black;
+    position: absolute;
+    left: 98%;
 }

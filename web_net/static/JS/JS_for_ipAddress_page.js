@@ -3,12 +3,15 @@ const deleteButton = document.getElementById('delButton')
 const changeNetworkForm = document.getElementById('changeNetworkForm')
 const changeVlanForm = document.getElementById('changeVlanForm')
 const changeLocationForm = document.getElementById('changeLocationForm')
+const changeDescriptionForm = document.getElementById('changeDescriptionForm')
 
 let valueVlan = Number(document.getElementById('valueVlan').value)
 
 let positionNetworkButton = $('#changeNetwork').offset().top
 let positionVlanButton = $('#changeVLAN').offset().top
 let positionLocationButton = $('#locateNetwork').offset().top
+let positionDescriptionButton = $('#descriptionNetwork').offset().top
+
 
 ////////////////////////////////////////////////////////////////////////
 function stopDefAction(evt) {
@@ -45,6 +48,7 @@ $('#changeNetworkForm').hide()
 $('#changeNetwork').on('click',function () {
     $('#changeLocationForm').fadeOut(500);
     $('#changeVlanForm').fadeOut(500);
+    $('#changeDescriptionForm').fadeOut(500);
     $('#changeNetworkForm').fadeToggle(500).offset({top:positionNetworkButton});
 });
 
@@ -52,6 +56,7 @@ $('#changeVlanForm').hide()
 $('#changeVLAN').on('click',function () {
     $('#changeNetworkForm').fadeOut(500);
     $('#changeLocationForm').fadeOut(500);
+    $('#changeDescriptionForm').fadeOut(500);
     $('#changeVlanForm').fadeToggle(500).offset({top:positionVlanButton})
 });
 
@@ -59,8 +64,17 @@ $('#changeLocationForm').hide()
 $('#locateNetwork').on('click',function () {
     $('#changeNetworkForm').fadeOut(500);
     $('#changeVlanForm').fadeOut(500);
+    $('#changeDescriptionForm').fadeOut(500);
     $('#changeLocationForm').fadeToggle(500).offset({top:positionLocationButton})
 });
+
+$('#changeDescriptionForm').hide()
+$('#descriptionNetwork').on('click', function () {
+    $('#changeNetworkForm').fadeOut(500);
+    $('#changeVlanForm').fadeOut(500);
+    $('#changeLocationForm').fadeOut(500);
+    $('#changeDescriptionForm').fadeToggle(500).offset({top:positionDescriptionButton})
+})
 
 changeLocationForm.addEventListener('submit', checkNoneVlan, false)
 deleteButton.addEventListener('submit', checkDelete, false)
