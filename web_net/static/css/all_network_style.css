@@ -1,0 +1,11 @@
+#main_table{
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    font-size: 150%;}
+
+td {
+    text-align: left;
+    padding: 15px 25px;
+    border-bottom: 1px solid black;
+}

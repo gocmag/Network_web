@@ -1,0 +1,16 @@
+{% extends 'web_net/basic_table.html' %}
+
+    {% block script_and_style %}
+        <link rel="stylesheet" href="/static/css/all_network_style.css">
+        <script src="/static/JS/JS_for_all_network_page.js"></script>
+    {% endblock %}
+
+    {% block table_content %}
+        {% for network in all_networks %}
+            <tr>
+                <td> {{ network.network }} </td>
+                <td> {{ network.description }} </td>
+            </tr>
+        {% endfor %}
+
+    {% endblock %}

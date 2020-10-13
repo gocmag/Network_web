@@ -173,6 +173,12 @@ def address(request, region_id, network_id):
             messages.error(request, f'Не удалось сменить дескрипшн сети {current_network}')
     return render(request, 'ip_address_page.html', parametrs)
 
+def all_networks_page(request):
+    all_networks = Networks.objects.all()
+
+    parametrs = {'all_networks':all_networks}
+    return render(request, 'all_network_page.html', parametrs)
+
 @login_required(login_url='/accounts/login/')
 def from_vlan_to_address (request,region_id,vlan_id):
     network_object = Networks.objects.get(region_reletionship=region_id, vlan_reletionship=vlan_id)
