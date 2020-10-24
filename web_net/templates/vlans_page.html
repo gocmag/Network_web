@@ -35,17 +35,19 @@
     {% endblock %}
 
     {% block table_content %}
-            {% for vlan in vlans_for_region  %}
-                <tr>
-                    <td> {{ vlan.vlan_id }} </td>
-                    <td> <a href="{% url 'from_vlan_to_address' region_id vlan.id%}"> {{ vlan.description }}</a> </td>
-                    <td class="trashImage">
-                        <form class="trashForm" method="post" name="trashForm" >
-                            {% csrf_token %}
-                            <input type="hidden" name="currentVlanID" value="{{ vlan.id }}">
-                            <button class="trashButtons" type="submit" name="trashButton"><img class="trashSize" src="{{ vlan.trash_image }}"> </button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
+            {% if vlans_for_region %}
+                {% for vlan in vlans_for_region  %}
+                    <tr>
+                        <td> {{ vlan.vlan_id }} </td>
+                        <td> <a href="{% url 'from_vlan_to_address' region_id vlan.id%}"> {{ vlan.description }}</a> </td>
+                        <td class="trashImage">
+                            <form class="trashForm" method="post" name="trashForm" >
+                                {% csrf_token %}
+                                <input type="hidden" name="currentVlanID" value="{{ vlan.id }}">
+                                <button class="trashButtons" type="submit" name="trashButton"><img class="trashSize" src="{{ vlan.trash_image }}"> </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
     {% endblock %}

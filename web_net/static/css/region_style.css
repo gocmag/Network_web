@@ -20,7 +20,7 @@ caption{
 
 td {
     border-bottom: 1px solid black;
-    font-size: 35px;
+    font-size: 30px;
     padding: 15px 25px;
 }
 
@@ -45,7 +45,7 @@ a:hover {
 #geokod_table {
     position: relative;
     left: 91%;
-    bottom: 28em;
+    bottom: 25em;
     border: 3px solid black;
     border-collapse: collapse;
 }

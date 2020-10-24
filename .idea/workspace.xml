@@ -25,9 +25,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web_net/migrations/0019_auto_20201020_1730.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/migrations/0021_auto_20201022_1555.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/migrations/0023_remove_adress_vpnpool_reletionship.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_address_page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/static/css/vpnPool_address_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/static/css/vpnPool_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/templates/vpnPool_address_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/templates/vpnPool_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/css/search_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/search_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/basic_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/basic_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/region_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/region_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/Network_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/Network_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/all_network_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/all_network_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/region_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/region_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/vlans_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/vlans_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +266,11 @@
       <workItem from="1602959190891" duration="203000" />
       <workItem from="1603005808605" duration="7286000" />
       <workItem from="1603037401292" duration="599000" />
-      <workItem from="1603178441501" duration="661000" />
+      <workItem from="1603178441501" duration="11604000" />
+      <workItem from="1603264374044" duration="1210000" />
+      <workItem from="1603352928352" duration="9562000" />
+      <workItem from="1603434308199" duration="9479000" />
+      <workItem from="1603531246561" duration="16635000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлен переход из VLAN в Address">
       <created>1595147389896</created>
@@ -289,18 +312,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="Добавлен переход из VLAN в Address" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="588" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594482237623">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="588" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1594482237623" />
-    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594483182149">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1594483182149" />
     <state x="526" y="69" width="912" height="904" key="CommitChangelistDialog2" timestamp="1595147389656">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="522" y="69" width="912" height="904" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1594322912068" />
     <state x="526" y="69" width="912" height="904" key="CommitChangelistDialog2/72.27.1848.1053@72.27.1848.1053" timestamp="1595147389656" />
     <state x="1145" y="328" width="424" height="520" key="FileChooserDialogImpl" timestamp="1602959272676">
       <screen x="72" y="27" width="1848" height="1053" />
@@ -308,32 +322,16 @@
     <state x="1145" y="328" width="424" height="520" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1602959272676" />
     <state x="1145" y="362" key="FileChooserDialogImpl/72.27.1848.1173@72.27.1848.1173" timestamp="1595250088298" />
     <state x="1145" y="431" key="FileChooserDialogImpl/72.27.1848.1413@72.27.1848.1413" timestamp="1595601477035" />
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1594502079737">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1594502079737" />
-    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1594502079736">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1594502079736" />
-    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1594502079736">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1594502079736" />
-    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1594502079737">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1594502079737" />
     <state x="486" y="187" width="1022" height="737" key="SettingsEditor" timestamp="1596284701186">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="486" y="187" width="1022" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1596284701186" />
     <state x="486" y="205" key="SettingsEditor/72.27.1848.1173@72.27.1848.1173" timestamp="1595250097932" />
     <state x="415" y="132" key="SettingsEditor/72.27.1848.1413@72.27.1848.1413" timestamp="1595601490639" />
-    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup" timestamp="1599766476142">
+    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup" timestamp="1603454693547">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1599766476142" />
+    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1603454693547" />
     <state x="649" y="265" width="672" height="678" key="search.everywhere.popup/72.27.1848.1413@72.27.1848.1413" timestamp="1596206985919" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

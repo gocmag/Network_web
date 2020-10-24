@@ -1,0 +1,38 @@
+{% extends 'web_net/basic_table.html' %}
+
+    {% block script_and_style %}
+        <link rel="stylesheet" href="/static/css/vpnPool_style.css">
+        <script src="/static/JS/JS_for_vpnPool_page.js"></script>
+    {% endblock %}
+
+    {% block actionButtons %}
+        <button class="actionButtons" id="addPool" > Добавить VPN-пул </button>
+    {% endblock %}
+
+    {% block content %}
+
+
+            <form method="post" id="addPoolForm">
+                {% csrf_token %}
+                <table id="addFormTable">
+                {{ form_vpnPool.as_table }}
+                </table>
+                <input name="addPoolButton" type="submit" value="Сохранить">
+            </form>
+  
+    {% endblock %}
+
+
+
+    {% block table_content %}
+        {% if all_vpnPool %}
+            <caption> VPN-пулы </caption>
+                {% for vpnPool in all_vpnPool  %}
+                    <tr>
+                        <td> <a href="{% url 'vpnPoolAddress' vpnPool.id %}"> {{vpnPool.pool}} </a> </td>
+                        <td> {{vpnPool.description|default_if_none:"---" }} </td>
+                    </tr>
+                {% endfor %}
+        {% endif %}
+    {% endblock %}
+

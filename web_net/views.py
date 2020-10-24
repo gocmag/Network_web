@@ -1,8 +1,9 @@
 import ipaddress
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from .models import Region, Networks, VLAN, Adress, PAT
-from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwork, changeLocationNetwork, changeVlan, changeDescriptionNetwork
+from .models import Region, Networks, VLAN, Adress, PAT, VPN
+from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwork, changeLocationNetwork, \
+    changeVlan, changeDescriptionNetwork, vpnForm, changeDescriptionVPN, changeNetworkVPN
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -173,14 +174,94 @@ def address(request, region_id, network_id):
             messages.error(request, f'Не удалось сменить дескрипшн сети {current_network}')
     return render(request, 'ip_address_page.html', parametrs)
 
+def vpnPool(request):
+    all_vpnPool = VPN.objects.all()
+    form_vpnPool = vpnForm()
+    form_changeDescriptionNetwork = changeDescriptionNetwork()
+    parametrs = {'all_vpnPool': all_vpnPool,
+                 'form_vpnPool': form_vpnPool,
+                 'form_changeDescriptionNetwork': form_changeDescriptionNetwork,
+                 }
+
+    if 'addPoolButton' in request.POST:
+        form_vpnPool = vpnForm(request.POST)
+        if form_vpnPool.is_valid():
+            correct_network = form_vpnPool.save(commit=False)
+            network_data = form_vpnPool.cleaned_data.get('pool')
+            correct_network_data_raw = ipaddress.ip_interface(network_data)
+            correct_network_data = correct_network_data_raw.network
+            correct_network.network = correct_network_data
+            form_vpnPool.save()
+            messages.success(request, f"Пул {correct_network_data} успешно создан")
+        else:
+            messages.error(request, "Не удалось создать пул")
+
+
+
+    return render(request, 'vpnPool_page.html', parametrs)
+
+
+def vpnPoolAddress(requst, vpn_id):
+    network_object = VPN.objects.get(id=vpn_id)
+    network_objects = VPN.objects.filter(id=vpn_id)
+    address_for_network = Adress.objects.filter(vpnPool_reletionship=vpn_id)
+    network_object_pool = network_object.pool
+    changeDescriptionNetwork = changeDescriptionVPN()
+    changeNetworkForm = changeNetworkVPN(network_object)
+    resetPage = redirect('vpnPoolAddress', vpn_id)
+
+
+    if 'delNetButton' in requst.POST:
+        network_object.delete()
+        messages.success(requst, f"Сеть {network_object.pool} успешно удалена")
+        return redirect('vpnPool')
+
+    if 'changeDescriptionFormSubmit' in requst.POST:
+        changeDescriptionForm = changeDescriptionVPN(requst.POST)
+        if changeDescriptionForm.is_valid():
+            newNetworkDescription = requst.POST['description']
+            network_objects.update(description=newNetworkDescription)
+            messages.success(requst, f'Дескрипшн сети {network_object} успешно изменён')
+            return resetPage
+        else:
+            messages.error(requst, f'Не удалось сменить дескрипшн сети {network_object}')
+            return resetPage
+
+    if 'changeNetworkFormSubmit' in requst.POST:
+        changeNetworkForm = changeNetworkVPN(network_object, requst.POST)
+        new_network = requst.POST['pool']
+        if changeNetworkForm.is_valid():
+            print('asdasdasdasd')
+            correct_network = changeNetworkForm.save(commit=False)
+            network_data = changeNetworkForm.cleaned_data.get('pool')
+            correct_network_data_raw = ipaddress.ip_interface(network_data)
+            correct_network_data = correct_network_data_raw.network
+            correct_network.network = correct_network_data
+
+            network_objects.update(pool=correct_network_data)
+
+            messages.success(requst, f"Сеть {network_object_pool} изменена на сеть {correct_network_data}")
+            return resetPage
+        else:
+            messages.error(requst, f"Не удалось изменить сеть {network_object_pool}")
+
+
+    parametrs = {'network_object': network_object,
+                 'address_for_network': address_for_network,
+                 'changeDescriptionNetwork': changeDescriptionNetwork,
+                 'changeNetworkForm': changeNetworkForm,
+                 }
+
+    return render(requst, 'vpnPool_address_page.html', parametrs)
+
 def all_networks_page(request):
     all_networks = Networks.objects.all()
 
-    parametrs = {'all_networks':all_networks}
+    parametrs = {'all_networks': all_networks}
     return render(request, 'all_network_page.html', parametrs)
 
 @login_required(login_url='/accounts/login/')
-def from_vlan_to_address (request,region_id,vlan_id):
+def from_vlan_to_address(request, region_id, vlan_id):
     network_object = Networks.objects.get(region_reletionship=region_id, vlan_reletionship=vlan_id)
     return redirect('address', region_id=region_id, network_id=network_object.id)
 

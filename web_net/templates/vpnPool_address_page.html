@@ -1,26 +1,17 @@
 {% extends 'web_net/basic_table.html' %}
     {% block script_and_style %}
-        <link rel="stylesheet" href="/static/css/ipAddress_style.css">
-        <script src="/static/JS/JS_for_ipAddress_page.js"></script>
+        <link rel="stylesheet" href="/static/css/vpnPool_address_style.css">
+        <script src="/static/JS/JS_for_vpnPool_address_page.js"></script>
     {% endblock %}
 
 
     {% block navigation %}
-        <input id="valueVlan" type="hidden" value={{ network_object.vlan_reletionship.vlan_id }}>
-
-        <div id="regionData">
-            <p>Регион: <a href={% url 'choise_page' region_id %}> {{ network_object.region_reletionship }}</a> </p>
-            <p>Сеть: <a href={% url 'network' region_id %}> {{ network_object.network }} </a> </p>
-            <p>VLAN: <a href={% url 'vlans' region_id %}> {{ network_object.vlan_reletionship|default_if_none:"" }} </a> </p>
-            <p>Имя сети: {{ network_object.description }}</p>
-        </div>
+        <p>Сеть: {{ network_object.pool }} </p>
+        <p>Имя сети: {{ network_object.description }}</p>
     {% endblock %}
 
     {% block actionButtons %}
-
         <button class="actionButtons" id="changeNetwork" name="changeNetworkButton">Изменить сеть</button>
-        <button class="actionButtons" id="changeVLAN" name="changeVlanButton">Назначить VLAN</button>
-        <button class="actionButtons" id="locateNetwork" name="locateNetworkButton">Смена локации сети</button>
         <button class="actionButtons" id="descriptionNetwork" name="descriptionNetworkButton">Смена имени сети</button>
         <form method="post" id="delButton">
             {% csrf_token %}
@@ -39,28 +30,14 @@
         <input type="submit" value="Сохранить" name="changeNetworkFormSubmit">
         </form>
 
-        <form method="post" id="changeLocationForm">
-            {% csrf_token %}
-            {{ changeLocationForm }}
-            <input type="submit" value="Сохранить" name="changeLocationFormSubmit">
-        </form>
 
-        <form method="post" id="changeDescriptionForm">
+       <form method="post" id="changeDescriptionForm">
             {% csrf_token %}
             {{ changeDescriptionNetwork }}
             <input type="submit" value="Сохранить" name="changeDescriptionFormSubmit">
         </form>
 
-        <form method="post" id="changeVlanForm">
-            {% csrf_token %}
-            {{ changeVlanForm }}
-            <input type="submit" value="Сохранить" name="changeVlanFormSubmit">
-        </form>
-
-
     {% endblock %}
-
-
 
 
     {% block table_content %}

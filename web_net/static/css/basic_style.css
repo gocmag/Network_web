@@ -1,3 +1,12 @@
+
+#main_table{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    font-size: 150%;
+}
+
+
 body{
     background-color: #323d9939;
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
@@ -5,7 +14,7 @@ body{
 
 caption{
     border-bottom: 5px solid maroon;
-    font-size: 75px;
+    font-size: 40px;
     margin-bottom: 3%;
 }
 

@@ -29,9 +29,10 @@
     {% endblock %}
 
 
-    {% block table_content %}
-            <caption>{{ region_object.name }}</caption>
 
+    {% block table_content %}
+            {% if networks_for_region %}
+            <caption> {{ region_object.name }} </caption>
             {% for network in networks_for_region  %}
                 <tr>
                     <td> <a href={% url 'address' region_id network.id %}> {{ network.network }}</a> </td>
@@ -39,5 +40,5 @@
                     <td><a href={% url 'vlans' region_id %}>{{ network.vlan_reletionship|default_if_none:"---" }}</a></td>
                 </tr>
             {% endfor %}
-
+            {% endif %}
     {% endblock %}

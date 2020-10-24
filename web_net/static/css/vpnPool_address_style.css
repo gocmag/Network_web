@@ -1,0 +1,57 @@
+
+table {
+    border: none;
+}
+
+#main_table{
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    font-size: 150%;
+}
+
+.arrow_photos {
+    border-right: 3px solid black;
+
+}
+
+.arrow_size {
+    width: 50px;
+}
+
+
+tr {
+    border-left: 3px solid black;
+}
+
+tr:nth-child(1){
+    border-top: 3px solid black;
+
+}
+
+td:nth-child(4){
+    border-top: None;
+    border-bottom: None;
+    background: none;
+}
+
+td:nth-child(-n+3){
+    border-top: None;
+
+}
+
+td {
+    text-align: left;
+    padding: 15px 25px;
+    border-bottom: 1px solid black;
+}
+
+
+a {text-decoration: none}
+
+
+
+
+#delNetButton {
+    background: #d40d0d;
+}

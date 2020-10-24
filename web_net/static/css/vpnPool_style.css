@@ -1,0 +1,36 @@
+#main_table{
+    position: absolute;
+    top: 20%;
+    left: 38%;
+    font-size: 150%;
+}
+
+#addForm{
+    border: 2px solid black;
+    width: 20%;
+    padding: 1%;
+}
+
+
+#addFormTable td {
+    border-bottom: none;
+}
+
+td {
+    text-align: left;
+    border-bottom: 1px solid black;
+    padding: 15px 25px;
+}
+
+a {text-decoration: none}
+
+
+#addFormTable td {
+    background: none;
+}
+
+#networkForm {
+    position: relative;
+    left: 15em;
+    bottom: 282em;
+}

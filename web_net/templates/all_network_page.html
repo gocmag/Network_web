@@ -6,11 +6,12 @@
     {% endblock %}
 
     {% block table_content %}
-        {% for network in all_networks %}
-            <tr>
-                <td> {{ network.network }} </td>
-                <td> {{ network.description }} </td>
-            </tr>
-        {% endfor %}
-
+        {% if all_networks %}
+            {% for network in all_networks %}
+                <tr>
+                    <td> {{ network.network }} </td>
+                    <td> {{ network.description }} </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
     {% endblock %}

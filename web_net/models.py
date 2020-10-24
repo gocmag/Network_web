@@ -57,8 +57,8 @@ class Networks(models.Model):
     def __str__(self):
         return str(self.network)
 
-    def save(self,*args,**kwargs):
-        super(Networks, self).save(*args,**kwargs)
+    def save(self, *args, **kwargs):
+        super(Networks, self).save(*args, **kwargs)
         network_object = Networks.objects.get(id=self.id)
         subnet = ipaddress.ip_network(self.network)
         ip_adresses = list(subnet.hosts())
@@ -70,12 +70,37 @@ class Networks(models.Model):
 
 
 
+class VPN (models.Model):
+    id = models.AutoField(primary_key=True)
+    pool = InetAddressField(null=False, unique=True, verbose_name='Пул')
+    description = models.CharField(max_length=200, null=True, blank=True, verbose_name='Описание')
+
+    objects = NetManager()
+
+    class Meta:
+        ordering = ('pool',)
+        verbose_name = 'VPN pool'
+
+    def save(self, *args, **kwargs):
+        super(VPN, self).save(*args, **kwargs)
+        vpnObject = VPN.objects.get(id=self.id)
+        subnet = ipaddress.ip_network(self.pool)
+        for ip in subnet:
+            ip_address = str(ip)
+            address_object = Adress(ip_address=ip_address)
+            address_object.vpnPool_reletionship = vpnObject
+            address_object.save()
+
+    def __str__(self):
+        return str(self.pool)
+
 
 class Adress(models.Model):
     id = models.AutoField(primary_key=True)
-    ip_address = models.GenericIPAddressField(null=False, blank=False)
-    description = models.CharField(max_length=200, null=True, blank=True)
-    network_reletionship = models.ForeignKey(Networks, on_delete=models.CASCADE, null=False, blank=False)
+    ip_address = models.GenericIPAddressField(null=False, blank=False, unique=True)
+    description = models.CharField(max_length=200, null=True, blank=False)
+    network_reletionship = models.ForeignKey(Networks, on_delete=models.CASCADE, null=True, blank=False)
+    vpnPool_reletionship = models.ForeignKey(VPN, on_delete=models.CASCADE, null=True, blank=True)
     arrow_image = models.CharField(max_length=100, default='/static/Photo/Arrow.png')
 
     class Meta:
@@ -85,19 +110,6 @@ class Adress(models.Model):
         return self.ip_address
 
 
-class Tunnels(models.Model):
-    id = models.AutoField(primary_key=True)
-    firstTunnelName = models.CharField(max_length=30, null=False, blank=False)
-    firstTunnelDevice = models.CharField(max_length=30, null=False, blank=False)
-    firstTunnelPhisicalAddress = models.GenericIPAddressField(null=False, blank=False)
-    firstTunnelNetworkAddress = models.GenericIPAddressField(null=False, blank=False)
-    secondTunnelName = models.CharField(max_length=30, null=False, blank=False)
-    secondTunnelDevice = models.CharField(max_length=30, null=True, blank=False)
-    secondTunnelPhisicalAddress = models.GenericIPAddressField(null=False, blank=False)
-    secondTunnelNetworkAddress = models.GenericIPAddressField(null=False, blank=False)
-
-    class Meta:
-        ordering = ('firstTunnelPhisicalAddress', 'secondTunnelPhisicalAddress')
 
 class PAT (models.Model):
     geokod = models.IntegerField(primary_key=True)
