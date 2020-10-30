@@ -26,14 +26,17 @@
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_basic_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_basic_page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_ipAddress_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_ipAddress_page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_address_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_address_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/css/basic_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/basic_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/ipAddress_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/ipAddress_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/network_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/network_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/vpnPool_address_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/vpnPool_address_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/vpnPool_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/vpnPool_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/templates/vpnPool_address_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/vpnPool_address_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/vpnPool_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/vpnPool_page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +274,8 @@
       <workItem from="1603873958811" duration="1297000" />
       <workItem from="1603959802248" duration="599000" />
       <workItem from="1603966997507" duration="15953000" />
-      <workItem from="1604044321853" duration="3283000" />
+      <workItem from="1604044321853" duration="3846000" />
+      <workItem from="1604051276415" duration="28683000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлен переход из VLAN в Address">
       <created>1595147389896</created>
@@ -313,26 +317,20 @@
     <option name="LAST_COMMIT_MESSAGE" value="Добавлен переход из VLAN в Address" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="526" y="69" width="912" height="904" key="CommitChangelistDialog2" timestamp="1595147389656">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="526" y="69" width="912" height="904" key="CommitChangelistDialog2/72.27.1848.1053@72.27.1848.1053" timestamp="1595147389656" />
     <state x="1145" y="328" width="424" height="520" key="FileChooserDialogImpl" timestamp="1603648343533">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="1145" y="328" width="424" height="520" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1603648343533" />
-    <state x="1145" y="362" key="FileChooserDialogImpl/72.27.1848.1173@72.27.1848.1173" timestamp="1595250088298" />
     <state x="1145" y="431" key="FileChooserDialogImpl/72.27.1848.1413@72.27.1848.1413" timestamp="1595601477035" />
     <state x="486" y="187" width="1022" height="737" key="SettingsEditor" timestamp="1596284701186">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="486" y="187" width="1022" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1596284701186" />
-    <state x="486" y="205" key="SettingsEditor/72.27.1848.1173@72.27.1848.1173" timestamp="1595250097932" />
     <state x="415" y="132" key="SettingsEditor/72.27.1848.1413@72.27.1848.1413" timestamp="1595601490639" />
-    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup" timestamp="1603454693547">
+    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup" timestamp="1604092230108">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1603454693547" />
+    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1604092230108" />
     <state x="649" y="265" width="672" height="678" key="search.everywhere.popup/72.27.1848.1413@72.27.1848.1413" timestamp="1596206985919" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

@@ -17,15 +17,67 @@
     {% endblock %}
 
     {% block actionButtons %}
+        <div>
+            <div id="changeNetworkButtonBlock">
+                <button class="actionButtons" id="changeNetwork" name="changeNetworkButton">Изменить сеть</button>
+            </div>
 
-        <button class="actionButtons" id="changeNetwork" name="changeNetworkButton">Изменить сеть</button>
-        <button class="actionButtons" id="changeVLAN" name="changeVlanButton">Назначить VLAN</button>
-        <button class="actionButtons" id="locateNetwork" name="locateNetworkButton">Смена локации сети</button>
-        <button class="actionButtons" id="descriptionNetwork" name="descriptionNetworkButton">Смена имени сети</button>
-        <form method="post" id="delButton">
-            {% csrf_token %}
-            <button type="submit" class="actionButtons" id="delNetButton" name="delNetButton">Удалить сеть</button>
-        </form>
+            <div class="oneStringBlock" id="changeNetworkBlock">
+                <form method="post" id="changeNetworkForm">
+                    {% csrf_token %}
+                    {{ changeNetworkForm.as_p }}
+                <input class="oneStringButton" type="submit" value="Сохранить" name="changeNetworkFormSubmit">
+                </form>
+             </div>
+        </div>
+
+        <div>
+            <div id="changeVlanButtonBlock">
+                <button class="actionButtons" id="changeVLAN" name="changeVlanButton">Назначить VLAN</button>
+            </div>
+
+             <div class="oneStringBlock" id="changeVlanBlock">
+                <form class="otherForm" method="post" id="changeVlanForm">
+                    {% csrf_token %}
+                    {{ changeVlanForm.as_p }}
+                    <input class="oneStringButton" type="submit" value="Сохранить" name="changeVlanFormSubmit">
+                </form>
+             </div>
+        </div>
+
+        <div>
+            <div id="locateNetworkButtonBlock">
+                <button class="actionButtons" id="locateNetwork" name="locateNetworkButton">Смена локации сети</button>
+            </div>
+            <div class="oneStringBlock" id="changeLocationBlock">
+                <form method="post" id="changeLocationForm">
+                    {% csrf_token %}
+                    {{ changeLocationForm.as_p }}
+                    <input class="oneStringButton" type="submit" value="Сохранить" name="changeLocationFormSubmit">
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <div id="descriptionNetworkButtonBlock">
+                <button class="actionButtons" id="descriptionNetwork" name="descriptionNetworkButton">Смена имени сети</button>
+            </div>
+
+            <div class="oneStringBlock" id="changeDescriptionBlock">
+                <form method="post" id="changeDescriptionForm">
+                    {% csrf_token %}
+                    {{ changeDescriptionNetwork.as_p }}
+                    <input class="oneStringButton" type="submit" value="Сохранить" name="changeDescriptionFormSubmit">
+                </form>
+            </div>
+        </div>
+
+        <div id="delNetButtonBlock">
+            <form method="post" id="delButton">
+                {% csrf_token %}
+                <button type="submit" class="actionButtons" id="delNetButton" name="delNetButton">Удалить сеть</button>
+            </form>
+        </div>
 
     {% endblock %}
 
@@ -33,29 +85,6 @@
 
 
     {% block content %}
-        <form method="post" id="changeNetworkForm">
-            {% csrf_token %}
-            {{ changeNetworkForm }}
-        <input type="submit" value="Сохранить" name="changeNetworkFormSubmit">
-        </form>
-
-        <form method="post" id="changeLocationForm">
-            {% csrf_token %}
-            {{ changeLocationForm }}
-            <input type="submit" value="Сохранить" name="changeLocationFormSubmit">
-        </form>
-
-        <form method="post" id="changeDescriptionForm">
-            {% csrf_token %}
-            {{ changeDescriptionNetwork }}
-            <input type="submit" value="Сохранить" name="changeDescriptionFormSubmit">
-        </form>
-
-        <form method="post" id="changeVlanForm">
-            {% csrf_token %}
-            {{ changeVlanForm }}
-            <input type="submit" value="Сохранить" name="changeVlanFormSubmit">
-        </form>
 
 
     {% endblock %}

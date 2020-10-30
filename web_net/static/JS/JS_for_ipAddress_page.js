@@ -6,11 +6,12 @@ const changeLocationForm = document.getElementById('changeLocationForm')
 const changeDescriptionForm = document.getElementById('changeDescriptionForm')
 
 let valueVlan = Number(document.getElementById('valueVlan').value)
+let inOppacity = '1'
+let outOppacity = '0'
+let toggleOppacity = 'toggle'
+let hideOppacity = 'hide'
 
-let positionNetworkButton = $('#changeNetwork').offset().top
-let positionVlanButton = $('#changeVLAN').offset().top
-let positionLocationButton = $('#locateNetwork').offset().top
-let positionDescriptionButton = $('#descriptionNetwork').offset().top
+
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -44,40 +45,167 @@ let x = $('td *').on('click',function () {
     $(newChangeDescriptionId).fadeIn(800);
 });
 
-$('#changeNetworkForm').hide()
-$('#changeNetwork').on('click',function () {
-    $('#changeLocationForm').fadeOut(500);
-    $('#changeVlanForm').fadeOut(500);
-    $('#changeDescriptionForm').fadeOut(500);
-    $('#changeNetworkForm').fadeToggle(500).offset({top:positionNetworkButton});
-});
 
-$('#changeVlanForm').hide()
-$('#changeVLAN').on('click',function () {
-    $('#changeNetworkForm').fadeOut(500);
-    $('#changeLocationForm').fadeOut(500);
-    $('#changeDescriptionForm').fadeOut(500);
-    $('#changeVlanForm').fadeToggle(500).offset({top:positionVlanButton})
-});
-
-$('#changeLocationForm').hide()
-$('#locateNetwork').on('click',function () {
-    $('#changeNetworkForm').fadeOut(500);
-    $('#changeVlanForm').fadeOut(500);
-    $('#changeDescriptionForm').fadeOut(500);
-    $('#changeLocationForm').fadeToggle(500).offset({top:positionLocationButton})
-});
-
-$('#changeDescriptionForm').hide()
-$('#descriptionNetwork').on('click', function () {
-    $('#changeNetworkForm').fadeOut(500);
-    $('#changeVlanForm').fadeOut(500);
-    $('#changeLocationForm').fadeOut(500);
-    $('#changeDescriptionForm').fadeToggle(500).offset({top:positionDescriptionButton})
-})
 
 changeLocationForm.addEventListener('submit', checkNoneVlan, false)
 deleteButton.addEventListener('submit', checkDelete, false)
+
+$('.oneStringBlock').hide()
+$('#changeNetwork').click(function () {
+    let blockCssOpacity = $('#changeNetworkBlock').css('display')
+
+    if (blockCssOpacity === 'none') {
+        $('#changeVlanButtonBlock').animate({
+            opacity: outOppacity
+        });
+        $('#locateNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#descriptionNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#delNetButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#changeNetworkBlock').delay(500).animate({
+            opacity: toggleOppacity
+        });
+    } else {
+        $('#changeNetworkBlock').animate({
+            opacity: hideOppacity
+        });
+        $('#changeVlanButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#locateNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#descriptionNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#delNetButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+    }
+});
+
+$('#changeVLAN').click(function () {
+    let blockCssOpacity = $('#changeVlanBlock').css('display')
+
+    if (blockCssOpacity === 'none') {
+        $('#changeNetworkButtonBlock').animate({
+            opacity: outOppacity
+        });
+        $('#locateNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#descriptionNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#delNetButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#changeVlanBlock').delay(500).animate({
+            opacity: toggleOppacity
+        });
+    } else {
+        $('#changeVlanBlock').animate({
+            opacity: hideOppacity
+        });
+        $('#changeNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#locateNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#descriptionNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#delNetButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+    }
+});
+
+$('#locateNetwork').click(function () {
+    let blockCssOpacity = $('#changeLocationBlock').css('display')
+
+    if (blockCssOpacity === 'none') {
+        $('#changeNetworkButtonBlock').animate({
+            opacity: outOppacity
+        });
+        $('#changeVlanButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#descriptionNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#delNetButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#changeLocationBlock').delay(500).animate({
+            opacity: toggleOppacity
+        });
+    } else {
+        $('#changeLocationBlock').animate({
+            opacity: hideOppacity
+        });
+        $('#changeNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#changeVlanButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#descriptionNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#delNetButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+    }
+});
+
+
+$('#descriptionNetwork').click(function () {
+    let blockCssOpacity = $('#changeDescriptionBlock').css('display')
+
+    if (blockCssOpacity === 'none') {
+        $('#changeNetworkButtonBlock').animate({
+            opacity: outOppacity
+        });
+        $('#changeVlanButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#locateNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#delNetButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#changeDescriptionBlock').delay(500).animate({
+            opacity: toggleOppacity
+        });
+    } else {
+        $('#changeDescriptionBlock').animate({
+            opacity: hideOppacity
+        });
+        $('#changeNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#changeVlanButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#locateNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#delNetButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+    }
+});
+
+
+
 
 ////////////////////////////////////////// AJAX block //////////////////////////////////////////////////////////
 function getCookie(name) {

@@ -11,15 +11,39 @@
     {% endblock %}
 
     {% block actionButtons %}
-        <button class="actionButtons" id="changeNetwork" name="changeNetworkButton">Изменить сеть</button>
-        <button class="actionButtons" id="descriptionNetwork" name="descriptionNetworkButton">Смена имени сети</button>
-        <button class="actionButtons" id="testAjax" name="testAjaxButton">Тест AJAX</button>
-        <form method="post" id="delButton">
-            {% csrf_token %}
-            <button type="submit" class="actionButtons" id="delNetButton" name="delNetButton">Удалить сеть</button>
-        </form>
 
-        <div id="testAjaxBlock">  </div>
+        <div>
+            <div id="changeNetworkButtonBlock">
+                <button class="actionButtons" id="changeNetwork" name="changeNetworkButton">Изменить сеть</button>
+            </div>
+            <div class="oneStringBlock" id="changeNetworkBlock">
+                <form method="post" id="changeNetworkForm">
+                {% csrf_token %}
+                {{ changeNetworkForm.as_p }}
+                 <input class="oneStringButton" type="submit" value="Сохранить" name="changeNetworkFormSubmit">
+                 </form>
+            </div>
+        </div>
+
+        <div>
+            <div id="descriptionNetworkButtonBlock">
+                <button class="actionButtons" id="descriptionNetwork" name="descriptionNetworkButton">Смена имени сети</button>
+            </div>
+            <div class="oneStringBlock" id="descriptionNetworkBlock">
+                <form method="post" id="changeDescriptionForm">
+                     {% csrf_token %}
+                     {{ changeDescriptionNetwork.as_p }}
+                     <input class="oneStringButton" type="submit" value="Сохранить" name="changeDescriptionFormSubmit">
+                 </form>
+            </div>
+        </div>
+
+        <div id="delButtonBlock">
+            <form method="post" id="delButton">
+                {% csrf_token %}
+                <button type="submit" class="actionButtons" id="delNetButton" name="delNetButton">Удалить сеть</button>
+            </form>
+        </div>
 
     {% endblock %}
 
@@ -27,18 +51,7 @@
 
 
     {% block content %}
-        <form method="post" id="changeNetworkForm">
-            {% csrf_token %}
-            {{ changeNetworkForm }}
-        <input type="submit" value="Сохранить" name="changeNetworkFormSubmit">
-        </form>
 
-
-       <form method="post" id="changeDescriptionForm">
-            {% csrf_token %}
-            {{ changeDescriptionNetwork }}
-            <input type="submit" value="Сохранить" name="changeDescriptionFormSubmit">
-        </form>
 
     {% endblock %}
 
@@ -46,10 +59,12 @@
     {% block table_content %}
             {% if address_for_network %}
             {% for address in address_for_network %}
-                <tr>
-                    <td> {{ address.ip_address }}</td>
-                    <td id="{{ address.id }}" class="descriptions" data-objectId="{{ address.id }}"> {{ address.description|default_if_none:"---" }}</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td> {{ address.ip_address }}</td>
+                        <td id="{{ address.id }}" class="descriptions" data-objectId="{{ address.id }}"> {{ address.description|default_if_none:"---" }}</td>
+                    </tr>
+                </tbody>
             {% endfor %}
             {% endif %}
     {% endblock %}

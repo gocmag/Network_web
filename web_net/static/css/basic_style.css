@@ -2,9 +2,10 @@
 #main_table{
     position: absolute;
     top: 30%;
-    left: 50%;
+    left: 45%;
     font-size: 150%;
 }
+
 
 
 body{
@@ -28,6 +29,9 @@ button:hover {
 
 td {
     background: ghostwhite;
+    text-align: left;
+    padding: 0.3em 2em;
+    border-bottom: 1px solid black;
 }
 
 #header{
@@ -97,6 +101,11 @@ a {
     top: 3%;
 }
 
+
+#delNetButton {
+    background: #d40d0d;
+}
+
 .actionButtons {
     margin-bottom: 25%;
     appearance: none;
@@ -135,4 +144,29 @@ a {
     color: black;
     position: absolute;
     left: 98%;
+}
+
+
+.oneStringBlock {
+    margin-top: -3em;
+}
+
+.oneStringButton {
+    margin-left: 10%;
+    background-color: #e7eb1e;
+    border-radius: 5px;
+    padding: 0.2em 2em;
+    font-size: 16px;
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+.oneStringButton:hover {
+    -webkit-box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+    box-shadow: 3px 15px 18px -6px rgba(0,0,0,0.7);
+}
+
+select {
+    width: 12em;
 }

@@ -6,20 +6,22 @@
     {% endblock %}
 
     {% block actionButtons %}
-        <button class="actionButtons" id="addPool" > Добавить VPN-пул </button>
+        <div>
+            <div>
+                <button class="actionButtons" id="addPool" > Добавить VPN-пул </button>
+            </div>
+            <div class="oneStringBlock">
+                <form method="post" id="addPoolForm">
+                    {% csrf_token %}
+                    {{ form_vpnPool.as_p }}
+                    <input class="oneStringButton" name="addPoolButton" type="submit" value="Сохранить">
+                </form>
+            </div>
+        </div>
     {% endblock %}
 
     {% block content %}
 
-
-            <form method="post" id="addPoolForm">
-                {% csrf_token %}
-                <table id="addFormTable">
-                {{ form_vpnPool.as_table }}
-                </table>
-                <input name="addPoolButton" type="submit" value="Сохранить">
-            </form>
-  
     {% endblock %}
 
 

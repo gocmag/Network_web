@@ -5,7 +5,7 @@ let positionButtonsLeft = 250
 let positionVpnButton = $('#addPool').offset().top
 ////////////////////////////////////////////////////
 
-$('#addPoolForm').hide()
+$('.oneStringBlock').hide()
 $('#addPool').on('click', function () {
-    $('#addPoolForm').fadeToggle(500).offset({top:positionVpnButton, left:positionButtonsLeft})
+    $('.oneStringBlock').fadeToggle(500)
 });

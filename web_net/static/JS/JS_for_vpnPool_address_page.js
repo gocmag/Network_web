@@ -2,6 +2,7 @@ const csrftoken = getCookie('csrftoken');
 const changeNetworkButton = document.getElementById('changeNetwork')
 const deleteButton = document.getElementById('delButton')
 const changeDescriptionForm = document.getElementById('changeDescriptionForm')
+const changeNetworkBlock = document.getElementById('changeNetworkBlock')
 
 let positionButtonsLeft = 250
 let positionDescriptionButton = $('#descriptionNetwork').offset().top
@@ -19,17 +20,58 @@ function checkDelete(e) {
 
 ////////////////////////////////////////////////////////////////////
 
-$('#changeNetworkForm').hide()
-$('#changeNetwork').on('click',function () {
-    $('#changeDescriptionForm').fadeOut(500);
-    $('#changeNetworkForm').fadeToggle(500).offset({top:positionNetworkButton, left:positionButtonsLeft});
+$('.oneStringBlock').hide()
+$('#changeNetwork').click(function () {
+    let blockCssOpacity = $('#changeNetworkBlock').css('display')
+
+    if (blockCssOpacity === 'none') {
+        $('#descriptionNetworkButtonBlock').animate({
+            opacity: 'toggle'
+        });
+        $('#delButtonBlock').animate({
+            opacity: 'toggle'
+        }, {queue: false});
+        $('#changeNetworkBlock').delay(500).animate({
+            opacity: 'toggle'
+        });
+    } else {
+            $('#changeNetworkBlock').animate({
+            opacity: 'toggle'
+        });
+            $('#descriptionNetworkButtonBlock').delay(500).animate({
+            opacity: 'toggle'
+        });
+             $('#delButtonBlock').delay(500).animate({
+            opacity: 'toggle'
+        });
+    }
 });
 
 
-$('#changeDescriptionForm').hide()
-$('#descriptionNetwork').on('click', function () {
-    $('#changeNetworkForm').fadeOut(500);
-    $('#changeDescriptionForm').fadeToggle(500).offset({top:positionDescriptionButton, left:positionButtonsLeft})
+
+$('#descriptionNetwork').click(function () {
+    let blockCssOpacity = $('#descriptionNetworkBlock').css('display')
+    if (blockCssOpacity === 'none') {
+        $('#changeNetworkButtonBlock').animate({
+            opacity: 'toggle'
+        });
+        $('#delButtonBlock').animate({
+            opacity: 'toggle'
+        }, {queue: false});
+        $('#descriptionNetworkBlock').delay(500).animate({
+            opacity: 'toggle'
+        });
+    } else {
+        $('#descriptionNetworkBlock').animate({
+            opacity: 'toggle'
+        });
+        $('#changeNetworkButtonBlock').delay(500).animate({
+            opacity: 'toggle'
+        });
+        $('#delButtonBlock').delay(500).animate({
+            opacity: 'toggle'
+        });
+    }
 })
 
 deleteButton.addEventListener('submit', checkDelete, false)
