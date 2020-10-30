@@ -1,4 +1,5 @@
 import ipaddress
+from django.http import Http404, JsonResponse
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from .models import Region, Networks, VLAN, Adress, PAT, VPN
@@ -259,6 +260,23 @@ def all_networks_page(request):
 
     parametrs = {'all_networks': all_networks}
     return render(request, 'all_network_page.html', parametrs)
+
+def testAjax(request):
+    if request.is_ajax():
+        response = {'first-text': "AJAX работает!"}
+        print("AJAAAAAAAAAAAAAX!!!!!!!!!")
+        return JsonResponse(response)
+    else:
+        raise Http404
+
+def changeDescription(request):
+    if request.is_ajax() and request.method == 'POST':
+        result = request.POST['test']
+        newDescription = request.POST['newDescription']
+        addressObject = Adress.objects.filter(id=result)
+        addressObject.update(description=newDescription)
+        response = {'newDescription': newDescription}
+        return JsonResponse(response)
 
 @login_required(login_url='/accounts/login/')
 def from_vlan_to_address(request, region_id, vlan_id):

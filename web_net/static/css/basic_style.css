@@ -18,6 +18,9 @@ caption{
     margin-bottom: 3%;
 }
 
+.descriptions {
+    cursor: pointer;
+}
 
 button:hover {
     cursor: pointer;
