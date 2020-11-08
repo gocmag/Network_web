@@ -25,18 +25,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web_net/migrations/0002_classnetwork_trash_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/migrations/0003_auto_20201106_1654.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_class_network_page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/static/css/class_network_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/templates/class_network_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0002_adress.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0003_adress_description.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0004_auto_20200704_2229.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0005_tunnels.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0006_auto_20200801_1533.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0007_auto_20200801_1815.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0008_auto_20200801_1834.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0009_auto_20200802_1121.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0010_auto_20200802_1133.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0011_auto_20200802_1139.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0012_auto_20200811_2323.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0013_region_geokod.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0014_auto_20200819_2208.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0015_auto_20200910_1820.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0016_auto_20200910_1824.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0017_vlan_trash_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0018_auto_20201020_1540.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0019_auto_20201020_1730.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0020_auto_20201022_1552.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0021_auto_20201022_1555.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0022_auto_20201022_1557.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0023_remove_adress_vpnpool_reletionship.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0024_auto_20201022_1608.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/migrations/0025_adress_vpnpool_reletionship.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_ipAddress_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_ipAddress_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_network_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_network_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_vlan_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_vlan_page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_address_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_address_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/JS/JS_for_vpnPool_page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/css/basic_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/basic_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/css/ipAddress_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/ipAddress_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/css/network_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/network_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/css/vpnPool_address_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/vpnPool_address_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/css/vpnPool_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/vpnPool_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/region_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/region_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/vlan_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/vlan_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/Network_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/Network_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/ip_address_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/region_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/region_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/templates/vlans_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/vlans_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/templates/vpnPool_address_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/vpnPool_address_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/templates/vpnPool_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/templates/vpnPool_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,6 +313,13 @@
       <workItem from="1603966997507" duration="15953000" />
       <workItem from="1604044321853" duration="3846000" />
       <workItem from="1604051276415" duration="28683000" />
+      <workItem from="1604303776621" duration="1271000" />
+      <workItem from="1604390732691" duration="644000" />
+      <workItem from="1604475287459" duration="3691000" />
+      <workItem from="1604571536548" duration="2109000" />
+      <workItem from="1604666644692" duration="10184000" />
+      <workItem from="1604746384030" duration="5228000" />
+      <workItem from="1604831096874" duration="27975000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлен переход из VLAN в Address">
       <created>1595147389896</created>

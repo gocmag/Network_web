@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Networks, Region, VLAN, PAT, VPN
+from .models import Networks, Region, VLAN, PAT, VPN, ClassNetwork
 
-admin.site.register([Networks, Region, VLAN, PAT, VPN])
+admin.site.register([Region,])
 
 # Register your models here.

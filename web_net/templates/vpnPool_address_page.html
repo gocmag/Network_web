@@ -6,8 +6,10 @@
 
 
     {% block navigation %}
+        <a href="{% url "vpnPool" %}"> VPN-пулы </a>
         <p>Сеть: {{ network_object.pool }} </p>
-        <p>Имя сети: {{ network_object.description }}</p>
+        <p>Имя сети: {{ network_object.description|default_if_none:"---"}}</p>
+        <p>Классовая сеть: {{ network_object.classNetwork_reletionship|default_if_none:"---"}}</p>
     {% endblock %}
 
     {% block actionButtons %}
@@ -35,6 +37,20 @@
                      {{ changeDescriptionNetwork.as_p }}
                      <input class="oneStringButton" type="submit" value="Сохранить" name="changeDescriptionFormSubmit">
                  </form>
+            </div>
+        </div>
+
+        <div>
+            <div id="classNetworkButtonBlock">
+                <button class="actionButtons" id="classNetwork" name="classNetworkButton"> Классовая сеть</button>
+            </div>
+
+            <div class="oneStringBlock" id="changeClassNetworkBlock">
+                <form method="post" id="changeClassNetworkForm">
+                    {% csrf_token %}
+                    {{ changeClassNetworkReletionshipForm.as_p }}
+                    <input class="oneStringButton" type="submit" value="Сохранить" name="changeClassNetworkFormSubmit">
+                </form>
             </div>
         </div>
 

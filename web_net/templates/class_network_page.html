@@ -1,0 +1,53 @@
+{% extends 'web_net/basic_table.html' %}
+
+    {% block script_and_style %}
+        <link rel="stylesheet" href="/static/css/class_network_style.css">
+        <script src="/static/JS/JS_for_class_network_page.js"></script>
+    {% endblock %}
+
+    {% block navigation %}
+
+    {% endblock %}
+
+    {% block actionButtons %}
+        <div id="addClassNetworkButtonBlock">
+            <button class="actionButtons" id="addClassNetwork" name="addClassNetworkButton">Добавить сеть </button>
+        </div>
+
+    {% endblock %}
+
+    {% block content %}
+        <div id="addClassNetworkBlock">
+             <form method="post" id="addForm" class="addForms">
+                 {% csrf_token %}
+                 <table class="formTables">
+                     {{ addClassNetworkForm.as_table }}
+                 </table>
+                 <input name="classNetworkButton" class="addFormsButton" type="submit" value="Сохранить" >
+             </form>
+        </div>
+
+    {% endblock %}
+
+
+    {% block table_content %}
+        {% if allClassNetworksObject %}
+            <caption> Классовые сети </caption>
+            {% for classNetwork in allClassNetworksObject %}
+                <tr>
+                    <td class="classNetworkTd" data-objectId="{{ classNetwork.id }}">
+                        {{ classNetwork }}
+                    </td>
+                    <td class="classNetworkDescriprion" data-objectId="{{ classNetwork.id }}"> {{ classNetwork.description|default_if_none:"---" }} </td>
+                    <td class="trashImage">
+                        <form class="trashForm" method="post" name="trashForm" >
+                            {% csrf_token %}
+                            <input type="hidden" name="currentClassNetworkID" value="{{ classNetwork.id }}">
+                            <button class="trashButtons" type="submit" name="trashButton"><img class="trashSize" src="{{ classNetwork.trash_image }}"> </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        {% endif %}
+    {% endblock %}

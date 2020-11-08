@@ -1,26 +1,30 @@
 const deleteButtons = document.getElementsByClassName('trashForm')
 
-let positionVlanButton = $('#addVLAN').offset().top
+let positionButtonsLeft = 250
+let positionNetworkButton = $('#addClassNetwork').offset().top
+
+
+$('#addForm').offset({top:positionNetworkButton-18})
 
 ///////////////////////////////////////////////////////////////////////////////
 function checkDelete(e) {
     //alert("YES")
-    if (!confirm('Вы уверены что хотите удалить VLAN ?')) {
+    if (!confirm('Вы уверены что хотите удалить сеть ?')) {
         e.preventDefault()
     }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-$('#addForm').offset({top:positionVlanButton-18})
+
 $('#addForm').hide()
-$('#addVLAN').on('click',function () {
+$('#addClassNetwork').on('click',function () {
     $('#addForm').slideToggle(500);
 });
+
 
 Array.from(deleteButtons).forEach(function (deleteButton){
      deleteButton.addEventListener('submit', checkDelete, false)
 })
-
 ////////////////////////////////////////// AJAX block //////////////////////////////////////////////////////////
 function getCookie(name) {
     let cookieValue = null;
@@ -38,8 +42,26 @@ function getCookie(name) {
     return cookieValue;
 }
 
-$('.descriptions').click(function () {
-    let x = this.getAttribute('data-objectId')
+
+
+$('.classNetworkTd').click(function () {
+    let currentObject = this
+    $.ajax({
+        type: 'POST',
+        async: true,
+        url: '/changeClassNetwork/',
+        data: {csrfmiddlewaretoken: getCookie('csrftoken'),
+               newClassNetwork: prompt('Введите новую классовую сеть'),
+               objectId: this.getAttribute('data-objectId')},
+        success: function (data) {
+            currentObject.innerHTML = data['newClassNetwork']
+        },
+        dataType: 'json'
+    })
+});
+
+
+$('.classNetworkDescriprion').click(function () {
     let currentObject = this
     let newDescription = prompt('Введите новый дескрипшн')
     if (newDescription === null) {
@@ -48,12 +70,12 @@ $('.descriptions').click(function () {
     $.ajax({
         type: 'POST',
         async: true,
-        url: '/changeVlanDescription/',
+        url: '/changeClassNetworkDescription/',
         data: {csrfmiddlewaretoken: getCookie('csrftoken'),
-                newDescription: newDescription,
-                objectId: this.getAttribute('data-objectId')},
+               newClassNetworkDescription: newDescription,
+               objectId: this.getAttribute('data-objectId')},
         success: function (data) {
-            currentObject.innerHTML = data['newDescription']
+            currentObject.innerHTML = data['newClassNetworkDescription']
         },
         dataType: 'json'
     })

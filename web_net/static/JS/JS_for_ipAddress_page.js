@@ -4,6 +4,7 @@ const changeNetworkForm = document.getElementById('changeNetworkForm')
 const changeVlanForm = document.getElementById('changeVlanForm')
 const changeLocationForm = document.getElementById('changeLocationForm')
 const changeDescriptionForm = document.getElementById('changeDescriptionForm')
+const changeClassNetworkForm = document.getElementById('changeClassNetworkForm')
 
 let valueVlan = Number(document.getElementById('valueVlan').value)
 let inOppacity = '1'
@@ -67,6 +68,9 @@ $('#changeNetwork').click(function () {
         $('#delNetButtonBlock').animate({
             opacity: outOppacity
         }, {queue: false});
+        $('#classNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
         $('#changeNetworkBlock').delay(500).animate({
             opacity: toggleOppacity
         });
@@ -86,6 +90,9 @@ $('#changeNetwork').click(function () {
         $('#delNetButtonBlock').delay(500).animate({
             opacity: inOppacity
         });
+        $('#classNetworkButtonBlock').delay(500).animate({
+                 opacity: inOppacity
+        });
     }
 });
 
@@ -103,6 +110,9 @@ $('#changeVLAN').click(function () {
             opacity: outOppacity
         }, {queue: false});
         $('#delNetButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#classNetworkButtonBlock').animate({
             opacity: outOppacity
         }, {queue: false});
         $('#changeVlanBlock').delay(500).animate({
@@ -124,6 +134,9 @@ $('#changeVLAN').click(function () {
         $('#delNetButtonBlock').delay(500).animate({
             opacity: inOppacity
         });
+        $('#classNetworkButtonBlock').delay(500).animate({
+                 opacity: inOppacity
+        });
     }
 });
 
@@ -141,6 +154,9 @@ $('#locateNetwork').click(function () {
             opacity: outOppacity
         }, {queue: false});
         $('#delNetButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#classNetworkButtonBlock').animate({
             opacity: outOppacity
         }, {queue: false});
         $('#changeLocationBlock').delay(500).animate({
@@ -162,6 +178,9 @@ $('#locateNetwork').click(function () {
         $('#delNetButtonBlock').delay(500).animate({
             opacity: inOppacity
         });
+        $('#classNetworkButtonBlock').delay(500).animate({
+                 opacity: inOppacity
+        });
     }
 });
 
@@ -180,6 +199,9 @@ $('#descriptionNetwork').click(function () {
             opacity: outOppacity
         }, {queue: false});
         $('#delNetButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#classNetworkButtonBlock').animate({
             opacity: outOppacity
         }, {queue: false});
         $('#changeDescriptionBlock').delay(500).animate({
@@ -201,8 +223,57 @@ $('#descriptionNetwork').click(function () {
         $('#delNetButtonBlock').delay(500).animate({
             opacity: inOppacity
         });
+        $('#classNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
     }
 });
+
+$('#classNetwork').click(function () {
+    let blockCssOpacity = $('#changeClassNetworkBlock').css('display')
+
+        if (blockCssOpacity === 'none') {
+        $('#changeNetworkButtonBlock').animate({
+            opacity: outOppacity
+        });
+        $('#changeVlanButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#locateNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#delNetButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#descriptionNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#changeClassNetworkBlock').delay(500).animate({
+            opacity: toggleOppacity
+        });
+
+
+    } else {
+        $('#changeClassNetworkBlock').animate({
+            opacity: hideOppacity
+        });
+        $('#descriptionNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#changeNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#changeVlanButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#locateNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#delNetButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+    }
+})
 
 
 
@@ -229,13 +300,17 @@ function getCookie(name) {
 $('.descriptions').click(function () {
     let x = this.getAttribute('data-objectId')
     let currentObject = this
+    let newDescription = prompt('Введите новый дескрипшн')
+    if (newDescription === null) {
+        return
+    }
     $.ajax({
         type: 'POST',
         async: true,
         url: '/changeDescription/',
         data: {csrfmiddlewaretoken: getCookie('csrftoken'),
-               newDescription: prompt('Введите новый дескрипшн'),
-               test: this.getAttribute('data-objectId')},
+                newDescription: newDescription,
+                test: this.getAttribute('data-objectId')},
         success: function (data) {
             currentObject.innerHTML = data['newDescription']
         },

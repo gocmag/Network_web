@@ -1,6 +1,6 @@
 import ipaddress
 from django import forms
-from  .models import Networks, Region, VLAN, Adress, VPN
+from  .models import Networks, Region, VLAN, Adress, VPN, ClassNetwork
 from django.core.exceptions import ValidationError
 
 class NetworkForm(forms.ModelForm):
@@ -153,11 +153,14 @@ class changeVlan(forms.ModelForm):
         fields = ['vlan_reletionship',]
         labels = {'vlan_reletionship': ''}
 
-
 class vpnForm(forms.ModelForm):
     def clean_pool(self):
         VpnPoolObject = self.cleaned_data['pool']
-        networkPool = ipaddress.ip_network(VpnPoolObject)
+        try:
+            networkPool = ipaddress.ip_network(str(VpnPoolObject))
+        except ValueError:
+            correctVpnPoll = ipaddress.ip_interface(str(VpnPoolObject))
+            networkPool = correctVpnPoll.network
         all_object_network = Networks.objects.all()
         all_object_vpn = VPN.objects.all()
         all_new_ipAdress = set()
@@ -184,7 +187,6 @@ class vpnForm(forms.ModelForm):
         model = VPN
         fields = ['pool']
         labels = {'pool': ''}
-
 
 class changeDescriptionVPN(forms.ModelForm):
     class Meta:
@@ -265,4 +267,16 @@ class changeNetworkVPN(forms.ModelForm):
         model = VPN
         fields = ['pool']
         labels = {'pool': ''}
+
+class changeClassNetworkReletionship(forms.ModelForm):
+    class Meta:
+        model = Networks
+        fields = ['classNetwork_reletionship']
+        labels = {'classNetwork_reletionship': ''}
+
+class addClassNetwork(forms.ModelForm):
+    class Meta:
+        model = ClassNetwork
+        exclude = ['trash_image', ]
+
 

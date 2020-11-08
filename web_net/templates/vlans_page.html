@@ -24,12 +24,12 @@
     {% block content %}
 
         <div id="test">
-            <form method="post" id="addForm">
+            <form method="post" id="addForm" class="addForms">
                 {% csrf_token %}
-                <table class="tables">
+                <table class="formTables">
                     {{ form.as_table }}
                 </table>
-                <input name="vlanButton" type="submit" value="Сохранить" >
+                <input class="addFormsButton" name="vlanButton" type="submit" value="Сохранить" >
             </form>
         </div>
     {% endblock %}
@@ -39,7 +39,7 @@
                 {% for vlan in vlans_for_region  %}
                     <tr>
                         <td> {{ vlan.vlan_id }} </td>
-                        <td> <a href="{% url 'from_vlan_to_address' region_id vlan.id%}"> {{ vlan.description }}</a> </td>
+                        <td class="descriptions" data-objectId="{{ vlan.id }}">  {{ vlan.description|default_if_none:'---' }} </td>
                         <td class="trashImage">
                             <form class="trashForm" method="post" name="trashForm" >
                                 {% csrf_token %}

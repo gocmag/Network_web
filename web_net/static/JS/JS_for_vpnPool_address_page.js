@@ -7,6 +7,10 @@ const changeNetworkBlock = document.getElementById('changeNetworkBlock')
 let positionButtonsLeft = 250
 let positionDescriptionButton = $('#descriptionNetwork').offset().top
 let positionNetworkButton = $('#changeNetwork').offset().top
+let inOppacity = '1'
+let outOppacity = '0'
+let toggleOppacity = 'toggle'
+let hideOppacity = 'hide'
 
 
 
@@ -26,24 +30,30 @@ $('#changeNetwork').click(function () {
 
     if (blockCssOpacity === 'none') {
         $('#descriptionNetworkButtonBlock').animate({
-            opacity: 'toggle'
+            opacity: outOppacity
         });
         $('#delButtonBlock').animate({
-            opacity: 'toggle'
+            opacity: outOppacity
+        }, {queue: false});
+        $('#classNetworkButtonBlock').animate({
+            opacity: outOppacity
         }, {queue: false});
         $('#changeNetworkBlock').delay(500).animate({
-            opacity: 'toggle'
+            opacity: toggleOppacity
         });
     } else {
             $('#changeNetworkBlock').animate({
-            opacity: 'toggle'
+            opacity: hideOppacity
         });
             $('#descriptionNetworkButtonBlock').delay(500).animate({
-            opacity: 'toggle'
+            opacity: inOppacity
         });
              $('#delButtonBlock').delay(500).animate({
-            opacity: 'toggle'
+            opacity: inOppacity
         });
+             $('#classNetworkButtonBlock').delay(500).animate({
+                 opacity: inOppacity
+             });
     }
 });
 
@@ -53,23 +63,60 @@ $('#descriptionNetwork').click(function () {
     let blockCssOpacity = $('#descriptionNetworkBlock').css('display')
     if (blockCssOpacity === 'none') {
         $('#changeNetworkButtonBlock').animate({
-            opacity: 'toggle'
+            opacity: outOppacity
         });
         $('#delButtonBlock').animate({
-            opacity: 'toggle'
+            opacity: outOppacity
+        }, {queue: false});
+        $('#classNetworkButtonBlock').animate({
+            opacity: outOppacity
         }, {queue: false});
         $('#descriptionNetworkBlock').delay(500).animate({
-            opacity: 'toggle'
+            opacity: toggleOppacity
         });
     } else {
         $('#descriptionNetworkBlock').animate({
-            opacity: 'toggle'
+            opacity: hideOppacity
         });
         $('#changeNetworkButtonBlock').delay(500).animate({
-            opacity: 'toggle'
+            opacity: inOppacity
         });
         $('#delButtonBlock').delay(500).animate({
-            opacity: 'toggle'
+            opacity: inOppacity
+        });
+        $('#classNetworkButtonBlock').delay(500).animate({
+                 opacity: inOppacity
+        });
+    }
+})
+
+$('#classNetwork').click(function () {
+    let blockCssOpacity = $('#changeClassNetworkBlock').css('display')
+    if (blockCssOpacity === 'none') {
+        $('#changeNetworkButtonBlock').animate({
+            opacity: outOppacity
+        });
+        $('#delButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#descriptionNetworkButtonBlock').animate({
+            opacity: outOppacity
+        }, {queue: false});
+        $('#changeClassNetworkBlock').delay(500).animate({
+            opacity: toggleOppacity
+        });
+    } else {
+        $('#changeClassNetworkBlock').animate({
+            opacity: hideOppacity
+        });
+        $('#changeNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#delButtonBlock').delay(500).animate({
+            opacity: inOppacity
+        });
+        $('#descriptionNetworkButtonBlock').delay(500).animate({
+            opacity: inOppacity
         });
     }
 })
@@ -100,13 +147,17 @@ function getCookie(name) {
 $('.descriptions').click(function () {
     let x = this.getAttribute('data-objectId')
     let currentObject = this
+    let newDescription = prompt('Введите новый дескрипшн')
+    if (newDescription === null) {
+        return
+    }
     $.ajax({
         type: 'POST',
         async: true,
         url: '/changeDescription/',
         data: {csrfmiddlewaretoken: getCookie('csrftoken'),
-               newDescription: prompt('Введите новый дескрипшн'),
-               test: this.getAttribute('data-objectId')},
+                newDescription: newDescription,
+                test: this.getAttribute('data-objectId')},
         success: function (data) {
             currentObject.innerHTML = data['newDescription']
         },

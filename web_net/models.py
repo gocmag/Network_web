@@ -5,8 +5,7 @@ import ipaddress
 class Region(models.Model):
     region_type = [
         ('core', 'Ядро'),
-        ('pat', 'ПАТ'),
-        ('other', 'Другое')
+        ('pat', 'ПАТ')
     ]
 
     id = models.AutoField(primary_key=True)
@@ -20,6 +19,20 @@ class Region(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ClassNetwork(models.Model):
+    id = models.AutoField(primary_key=True)
+    network = InetAddressField(null=False, unique=True, verbose_name='Сеть')
+    description = models.CharField(max_length=200, null=True, blank=False, verbose_name='Дескрипшн')
+    trash_image = models.CharField(max_length=100, default='/static/Photo/Trash2.png')
+
+    class Meta:
+        ordering = ('network',)
+        verbose_name = 'Class network'
+
+    def __str__(self):
+        return str(self.network)
 
 
 
@@ -47,12 +60,13 @@ class Networks(models.Model):
     region_reletionship = models.ForeignKey(Region, on_delete=models.CASCADE, verbose_name='Регион')
     vlan_reletionship = models.ForeignKey(VLAN, on_delete=models.SET_NULL, null=True, blank=True,
                                              verbose_name='VLAN')
+    classNetwork_reletionship = models.ForeignKey(ClassNetwork, on_delete=models.DO_NOTHING, null=True, blank=True, verbose_name='Классовая сеть')
     objects = NetManager()
 
     class Meta:
         ordering = ('network',)
         verbose_name = 'Network'
-        unique_together = ('network', 'vlan_reletionship')
+        unique_together = ('network',)
 
     def __str__(self):
         return str(self.network)
@@ -74,6 +88,7 @@ class VPN (models.Model):
     id = models.AutoField(primary_key=True)
     pool = InetAddressField(null=False, unique=True, verbose_name='Пул')
     description = models.CharField(max_length=200, null=True, blank=True, verbose_name='Описание')
+    classNetwork_reletionship = models.ForeignKey(ClassNetwork, on_delete=models.DO_NOTHING, null=True, blank=True, verbose_name='Классовая сеть')
 
     objects = NetManager()
 
@@ -115,8 +130,10 @@ class PAT (models.Model):
     geokod = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=10, null=False, blank=False)
 
+
     class Meta:
         ordering = ('geokod',)
 
     def __str__(self):
         return self.name
+

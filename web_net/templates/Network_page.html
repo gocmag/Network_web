@@ -18,12 +18,12 @@
     {% block content %}
 
         <div id="networkForm">
-            <form method="post" id="addForm">
+            <form method="post" id="addForm" class="addForms">
                 {% csrf_token %}
-                <table id="addFormTable">
+                <table id="addFormTable" class="formTables">
                 {{ form.as_table }}
                 </table>
-                <input type="submit" value="Сохранить">
+                <input class="addFormsButton" type="submit" value="Сохранить">
             </form>
         </div>
     {% endblock %}

@@ -2,11 +2,14 @@ import ipaddress
 from django.http import Http404, JsonResponse
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from .models import Region, Networks, VLAN, Adress, PAT, VPN
+from .models import Region, Networks, VLAN, Adress, PAT, VPN, ClassNetwork
 from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwork, changeLocationNetwork, \
-    changeVlan, changeDescriptionNetwork, vpnForm, changeDescriptionVPN, changeNetworkVPN
+    changeVlan, changeDescriptionNetwork, vpnForm, changeDescriptionVPN, changeNetworkVPN, changeClassNetworkReletionship, \
+    addClassNetwork
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+defaultValue = '---'
 
 @login_required(login_url='/accounts/login/')
 def choise_page(request, region_id):
@@ -33,10 +36,10 @@ def networking(request, region_id):
             messages.error(request, "Не удалось создать сеть")
 
     parametrs = {
-                'networks':networks,
-                'networks_for_region':networks_for_region,
-                'region_id':region_id,
-                'region_object':region_object,
+                'networks': networks,
+                'networks_for_region': networks_for_region,
+                'region_id': region_id,
+                'region_object': region_object,
                 'form': form,
                 }
 
@@ -47,6 +50,8 @@ def vlans(request, region_id):
     vlans_for_region = VLAN.objects.filter(region_reletionship=region_id)
     region_object = Region.objects.get(id=region_id)
     form = VlanForm(initial={'region_reletionship':region_object})
+    resetPage = redirect('vlans', region_id)
+
     parametrs = {
         'vlans_for_region':vlans_for_region,
         'form':form,
@@ -59,9 +64,10 @@ def vlans(request, region_id):
         vlan_id_inForm = request.POST.get('vlan_id')
         if form.is_valid():
             form.save()
-            messages.success(request, f"Успешно создан VLAN {vlan_id_inForm}")
+            messages.success(request, f"VLAN Успешно создан VLAN")
+            return resetPage
         else:
-            messages.error(request, f"Не удалось создать VLAN {vlan_id_inForm}")
+            messages.error(request, f"Не удалось создать VLAN")
 
     if "trashButton" in request.POST:
         currentVlanID = int(request.POST.get('currentVlanID'))
@@ -69,7 +75,6 @@ def vlans(request, region_id):
         messages.success(request, "VLAN успешно удалён")
 
     return render(request, 'vlans_page.html', parametrs)
-
 
 @login_required(login_url='/accounts/login/')
 def region(request):
@@ -104,6 +109,7 @@ def address(request, region_id, network_id):
     changeNetworkForm = changeNetwork(current_network_object)
     changeLocationForm = changeLocationNetwork()
     changeDescriptionForm = changeDescriptionNetwork()
+    changeClassNetworkReletionshipForm = changeClassNetworkReletionship()
     changeVlanForm = changeVlan(region_id)
 
     parametrs = {'address_for_network': address_for_network,
@@ -113,6 +119,7 @@ def address(request, region_id, network_id):
                  'changeLocationForm': changeLocationForm,
                  'changeDescriptionNetwork': changeDescriptionNetwork,
                  'changeVlanForm': changeVlanForm,
+                 'changeClassNetworkReletionshipForm': changeClassNetworkReletionshipForm,
                  'form': form}
 
     if 'delNetButton' in request.POST:
@@ -171,8 +178,19 @@ def address(request, region_id, network_id):
             newNetworkDescription = request.POST['description']
             current_network_objects.update(description=newNetworkDescription)
             messages.success(request, f'Дескрипшн сети {current_network} успешно изменён')
+            return resetPage
         else:
             messages.error(request, f'Не удалось сменить дескрипшн сети {current_network}')
+
+    if 'changeClassNetworkFormSubmit' in request.POST:
+        changeClassNetworkReletionshipForm = changeClassNetworkReletionship(request.POST)
+        if changeClassNetworkReletionshipForm.is_valid():
+            newClassNetwork = request.POST['classNetwork_reletionship']
+            current_network_objects.update(classNetwork_reletionship=newClassNetwork)
+            messages.success(request, 'Классовая сеть успешно добавлена')
+            return resetPage
+        else:
+            messages.error(request, 'Не удалось добавить классовую сеть')
     return render(request, 'ip_address_page.html', parametrs)
 
 def vpnPool(request):
@@ -191,7 +209,7 @@ def vpnPool(request):
             network_data = form_vpnPool.cleaned_data.get('pool')
             correct_network_data_raw = ipaddress.ip_interface(network_data)
             correct_network_data = correct_network_data_raw.network
-            correct_network.network = correct_network_data
+            correct_network.pool = correct_network_data
             form_vpnPool.save()
             messages.success(request, f"Пул {correct_network_data} успешно создан")
         else:
@@ -201,7 +219,6 @@ def vpnPool(request):
 
     return render(request, 'vpnPool_page.html', parametrs)
 
-
 def vpnPoolAddress(requst, vpn_id):
     network_object = VPN.objects.get(id=vpn_id)
     network_objects = VPN.objects.filter(id=vpn_id)
@@ -209,6 +226,7 @@ def vpnPoolAddress(requst, vpn_id):
     network_object_pool = network_object.pool
     changeDescriptionNetwork = changeDescriptionVPN()
     changeNetworkForm = changeNetworkVPN(network_object)
+    changeClassNetworkReletionshipForm = changeClassNetworkReletionship()
     resetPage = redirect('vpnPoolAddress', vpn_id)
 
 
@@ -246,14 +264,47 @@ def vpnPoolAddress(requst, vpn_id):
         else:
             messages.error(requst, f"Не удалось изменить сеть {network_object_pool}")
 
+    if 'changeClassNetworkFormSubmit' in requst.POST:
+        changeClassNetworkReletionshipForm = changeClassNetworkReletionship(requst.POST)
+        if changeClassNetworkReletionshipForm.is_valid():
+            newClassNetwork = requst.POST['classNetwork_reletionship']
+            network_objects.update(classNetwork_reletionship=newClassNetwork)
+            messages.success(requst, 'Классовая сеть успешно добавлена')
+            return resetPage
+        else:
+            messages.error(requst, 'Не удалось добавить классовую сеть')
+
 
     parametrs = {'network_object': network_object,
                  'address_for_network': address_for_network,
                  'changeDescriptionNetwork': changeDescriptionNetwork,
                  'changeNetworkForm': changeNetworkForm,
+                 'changeClassNetworkReletionshipForm': changeClassNetworkReletionshipForm,
                  }
 
     return render(requst, 'vpnPool_address_page.html', parametrs)
+
+def class_network(request):
+    allClassNetworksObject = ClassNetwork.objects.all()
+    addClassNetworkForm = addClassNetwork()
+
+    if "trashButton" in request.POST:
+        currentClassNetworkID = int(request.POST.get('currentClassNetworkID'))
+        ClassNetwork.objects.get(id=currentClassNetworkID).delete()
+        messages.success(request, "Классовая сеть успешно удалена")
+
+    if "classNetworkButton" in request.POST:
+        addClassNetworkForm = addClassNetwork(request.POST)
+        newClassNetwork = request.POST['network']
+        if addClassNetworkForm.is_valid():
+            addClassNetworkForm.save()
+            messages.success(request, f'Классовая сеть {newClassNetwork} успешно добавлена')
+        else:
+            messages.error(request, f'Не удалось добавить сеть {newClassNetwork}')
+
+    context = {'allClassNetworksObject': allClassNetworksObject,
+               'addClassNetworkForm': addClassNetworkForm}
+    return render(request, 'class_network_page.html', context)
 
 def all_networks_page(request):
     all_networks = Networks.objects.all()
@@ -273,9 +324,50 @@ def changeDescription(request):
     if request.is_ajax() and request.method == 'POST':
         result = request.POST['test']
         newDescription = request.POST['newDescription']
+        print(newDescription)
         addressObject = Adress.objects.filter(id=result)
-        addressObject.update(description=newDescription)
-        response = {'newDescription': newDescription}
+        if newDescription:
+            addressObject.update(description=newDescription)
+            response = {'newDescription': newDescription}
+        else:
+            addressObject.update(description=defaultValue)
+            response = {'newDescription': defaultValue}
+
+        return JsonResponse(response)
+
+def changeClassNetwork(request):
+    if request.is_ajax() and request.method == 'POST':
+        objectId = request.POST['objectId']
+        newClassNetwork = request.POST['newClassNetwork']
+        classNetworkObject = ClassNetwork.objects.filter(id=objectId)
+        classNetworkObject.update(network=newClassNetwork)
+        response = {'newClassNetwork': newClassNetwork}
+        return JsonResponse(response)
+
+def changeClassNetworkDescription(request):
+    if request.is_ajax() and request.method == 'POST':
+        objectId = request.POST['objectId']
+        newClassNetworkDescription = request.POST['newClassNetworkDescription']
+        classNetworkObject = ClassNetwork.objects.filter(id=objectId)
+        if newClassNetworkDescription:
+            classNetworkObject.update(description=newClassNetworkDescription)
+            response = {'newClassNetworkDescription': newClassNetworkDescription}
+        else:
+            classNetworkObject.update(description=defaultValue)
+            response = {'newClassNetworkDescription': defaultValue}
+        return JsonResponse(response)
+
+def changeVlanDescription(request):
+    if request.is_ajax() and request.method == 'POST':
+        objectId = request.POST['objectId']
+        newVlanDescription = request.POST['newDescription']
+        VlanObject = VLAN.objects.filter(id=objectId)
+        if newVlanDescription:
+            VlanObject.update(description=newVlanDescription)
+            response = {'newDescription': newVlanDescription}
+        else:
+            VlanObject.update(description=defaultValue)
+            response = {'newDescription': defaultValue}
         return JsonResponse(response)
 
 @login_required(login_url='/accounts/login/')

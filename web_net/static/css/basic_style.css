@@ -1,8 +1,8 @@
 
 #main_table{
     position: absolute;
-    top: 30%;
-    left: 45%;
+    top: 15%;
+    left: 40%;
     font-size: 150%;
 }
 
@@ -98,7 +98,7 @@ a {
 
 #buttonsActionBlock {
     position: relative;
-    top: 3%;
+    top: 1%;
 }
 
 
@@ -169,4 +169,48 @@ a {
 
 select {
     width: 12em;
+}
+
+.trashImage:hover {
+    cursor: pointer;
+}
+
+.trashSize {
+    width: 2.3em;
+}
+
+.trashButtons {
+    background: none;
+    border: none;
+}
+
+.formTables {
+    border: 2px solid black;
+    width: 17%;
+    padding: 1%;
+    background: #dbdbdb
+}
+
+.formTables td {
+    border-bottom: none;
+    background: none;
+    text-align: left;
+    height: 2em;
+}
+
+.addForms {
+    border: none;
+    width: 17%;
+    padding: 1%;
+}
+
+.addFormsButton {
+    margin: 2%;
+    margin-left: 34%;
+    background-color: #e7eb1e;
+    border-radius: 5px;
+    padding: 0.2em 2em;
+    font-size: 16px;
+    transition: 0.7s;
+    cursor: pointer;
 }

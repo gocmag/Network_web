@@ -11,8 +11,9 @@
         <div id="regionData">
             <p>Регион: <a href={% url 'choise_page' region_id %}> {{ network_object.region_reletionship }}</a> </p>
             <p>Сеть: <a href={% url 'network' region_id %}> {{ network_object.network }} </a> </p>
-            <p>VLAN: <a href={% url 'vlans' region_id %}> {{ network_object.vlan_reletionship|default_if_none:"" }} </a> </p>
-            <p>Имя сети: {{ network_object.description }}</p>
+            <p>VLAN: <a href={% url 'vlans' region_id %}> {{ network_object.vlan_reletionship|default_if_none:"---" }} </a> </p>
+            <p>Имя сети: {{ network_object.description|default_if_none:"---" }}</p>
+            <p>Классовая сеть: {{ network_object.classNetwork_reletionship|default_if_none:"---" }}</p>
         </div>
     {% endblock %}
 
@@ -68,6 +69,20 @@
                     {% csrf_token %}
                     {{ changeDescriptionNetwork.as_p }}
                     <input class="oneStringButton" type="submit" value="Сохранить" name="changeDescriptionFormSubmit">
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <div id="classNetworkButtonBlock">
+                <button class="actionButtons" id="classNetwork" name="classNetworkButton"> Классовая сеть</button>
+            </div>
+
+            <div class="oneStringBlock" id="changeClassNetworkBlock">
+                <form method="post" id="changeClassNetworkForm">
+                    {% csrf_token %}
+                    {{ changeClassNetworkReletionshipForm.as_p }}
+                    <input class="oneStringButton" type="submit" value="Сохранить" name="changeClassNetworkFormSubmit">
                 </form>
             </div>
         </div>
