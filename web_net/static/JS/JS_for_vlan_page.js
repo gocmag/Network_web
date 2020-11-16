@@ -14,7 +14,7 @@ function checkDelete(e) {
 $('#addForm').offset({top:positionVlanButton-18})
 $('#addForm').hide()
 $('#addVLAN').on('click',function () {
-    $('#addForm').slideToggle(500);
+    $('#addForm').toggle(500);
 });
 
 Array.from(deleteButtons).forEach(function (deleteButton){
