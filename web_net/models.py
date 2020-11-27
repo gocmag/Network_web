@@ -35,7 +35,6 @@ class ClassNetwork(models.Model):
         return str(self.network)
 
 
-
 class VLAN(models.Model):
     id = models.AutoField(primary_key=True)
     vlan_id = models.IntegerField(verbose_name='VLAN')
@@ -50,7 +49,6 @@ class VLAN(models.Model):
 
     def __str__(self):
         return str(self.vlan_id)
-
 
 
 class Networks(models.Model):
@@ -81,7 +79,6 @@ class Networks(models.Model):
             adress_object = Adress(ip_address=ip_adress)
             adress_object.network_reletionship = network_object
             adress_object.save()
-
 
 
 class VPN (models.Model):
