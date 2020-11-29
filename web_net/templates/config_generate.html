@@ -1,0 +1,24 @@
+{% extends 'web_net/basic.html' %}
+    {% block script_and_style %}
+        <link rel="stylesheet" href="/static/css/config_generate_style.css">
+    {% endblock %}
+
+
+    {% block content %}
+        <div id="formBlock">
+            <form method="post">
+                {% csrf_token %}
+                <div>
+                {% for field in configGenerateForm %}
+                    <div class="form-group">
+                        {{field.label_tag}}
+                        <div>{{field}}</div>
+                        <div> {{field.errors}}</div>
+                    </div>
+                {% endfor %}
+                </div>
+                <input class="oneStringButton" type="submit" value="Создать шаблон">
+            </form>
+        </div>
+
+    {% endblock %}

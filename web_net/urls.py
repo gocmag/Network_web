@@ -19,5 +19,6 @@ urlpatterns = [
     path('classNetworks/', views.class_network, name='classNetworks'),
     path('changeClassNetwork/', views.changeClassNetwork, name='changeClassNetwork'),
     path('changeClassNetworkDescription/', views.changeClassNetworkDescription, name='changeClassNetworkDescription'),
-    path('changeVlanDescription/', views.changeVlanDescription, name='changeVlanDescription')
+    path('changeVlanDescription/', views.changeVlanDescription, name='changeVlanDescription'),
+    path('configGenerate/', views.configGenerate, name='configGenerate')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

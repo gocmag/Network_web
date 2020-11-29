@@ -25,9 +25,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web_net/static/css/config_generate_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/templates/admin/web_net/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/templates/config.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_net/templates/config_generate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/web_net/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/web_net/basic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/basic_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/basic_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/static/css/region_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/region_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +49,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="CSS File" />
       </list>
     </option>
@@ -63,12 +71,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/cscStartConfig.py" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web_net/templates/admin/web_net" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/account/static/css" />
     </key>
@@ -290,7 +301,11 @@
       <workItem from="1605974840241" duration="50000" />
       <workItem from="1605974947251" duration="310000" />
       <workItem from="1606395222190" duration="6598000" />
-      <workItem from="1606465911923" duration="433000" />
+      <workItem from="1606465911923" duration="16033000" />
+      <workItem from="1606570315989" duration="2124000" />
+      <workItem from="1606581222088" duration="5265000" />
+      <workItem from="1606645538453" duration="10784000" />
+      <workItem from="1606674947137" duration="3199000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлен переход из VLAN в Address">
       <created>1595147389896</created>
@@ -332,14 +347,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Добавлен переход из VLAN в Address" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1145" y="328" width="424" height="520" key="FileChooserDialogImpl" timestamp="1605974888891">
+    <state x="1145" y="328" width="424" height="520" key="FileChooserDialogImpl" timestamp="1606475651597">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="1145" y="328" width="424" height="520" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1605974888891" />
-    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup" timestamp="1604092230108">
+    <state x="1145" y="328" width="424" height="520" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1606475651597" />
+    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup" timestamp="1606584691184">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1604092230108" />
+    <state x="649" y="204" width="672" height="506" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1606584691184" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Network_web$validators.coverage" NAME="validators Coverage Results" MODIFIED="1594483602437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_net" />

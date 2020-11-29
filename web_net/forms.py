@@ -279,4 +279,20 @@ class addClassNetwork(forms.ModelForm):
         model = ClassNetwork
         exclude = ['trash_image', ]
 
+class addConfigGenerate(forms.Form):
+    Pat_geokod = forms.IntegerField(label='Второй октет ip-адреса ЦОК')
+    number_bo = forms.IntegerField(label='Третий октет ip-адреса ЦОК')
+    PAT_inet_address = forms.CharField(label='Интернет адреса ПАТ', widget=forms.TextInput(attrs={'placeholder': 'Прим. 82.16.11.3, 35.11.45.2'}))
+    logicalAddressTunnel0 = forms.CharField(label='Логический ip-адрес Датагруп', required=False, widget=forms.TextInput(attrs={'placeholder': 'Без маски'}))
+    physicalAddressTunnel0 = forms.CharField(label='Физический ip-адрес Датагруп', required=False, widget=forms.TextInput(attrs={'placeholder': 'Без маски'}))
+    logicalAddressTunnel1 = forms.CharField(label='Логический ip-адрес интернет-провайдера', required=False, widget=forms.TextInput(attrs={'placeholder': 'Без маски'}))
+    internetIPaddress = forms.CharField(label='Физический ip-aдрес интернет-провайдера', required=False, widget=forms.TextInput(attrs={'placeholder': 'С десятичной маской...или dhcp'}))
+    inetfaceISP1 = forms.CharField(label='Физический порт включения Датагруп', required=False, widget=forms.TextInput(attrs={'placeholder': 'порт на маршрутизаторе'}))
+    interfaceInternet = forms.CharField(label='Физический порт влючения интернет-провайдера', required=False, widget=forms.TextInput(attrs={'placeholder': 'порт на маршрутизаторе'}))
+    interfaceLAN = forms.CharField(label='Физический порт включения LAN', required=False, widget=forms.TextInput(attrs={'placeholder': 'порт на маршрутизаторе'}))
+    internetProviderName = forms.CharField(label='Имя интернет-провайдера', required=False)
+    defaultIPaddress = forms.CharField(required=False, label='ip-адрес шлюза по-умолчанию', widget=forms.TextInput(attrs={'placeholder': '...или dhcp'}))
+    PatNumberForACL = forms.IntegerField(label='Геокод ПАТ к которому относиться ЦОК', required=False)
+    namePAT = forms.CharField(label='Аббревиатура ПАТ', required=False, widget=forms.TextInput(attrs={'placeholder': 'Пример: sm'}))
+
 

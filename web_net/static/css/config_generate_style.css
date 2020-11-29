@@ -1,0 +1,8 @@
+#formBlock {
+    position: relative;
+    top: 2em;
+}
+
+.form-group {padding-bottom: 0.7em}
+.form-group input {width: 15em}
+.oneStringButton {margin-left: 0%}

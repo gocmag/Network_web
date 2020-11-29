@@ -5,7 +5,7 @@ from django.db.models import Q
 from .models import Region, Networks, VLAN, Adress, PAT, VPN, ClassNetwork
 from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwork, changeLocationNetwork, \
     changeVlan, changeDescriptionNetwork, vpnForm, changeDescriptionVPN, changeNetworkVPN, changeClassNetworkReletionship, \
-    addClassNetwork
+    addClassNetwork, addConfigGenerate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -369,6 +369,52 @@ def changeVlanDescription(request):
             VlanObject.update(description=defaultValue)
             response = {'newDescription': defaultValue}
         return JsonResponse(response)
+
+def configGenerate (request):
+    configGenerateForm = addConfigGenerate()
+
+
+
+    if request.method == 'POST':
+        configGenerateForm = addConfigGenerate(request.POST)
+        if configGenerateForm.is_valid():
+            number_bo = configGenerateForm.cleaned_data['number_bo']
+            PAT_inet_address = configGenerateForm.cleaned_data['PAT_inet_address'].split(',')
+            internetIPaddress = configGenerateForm.cleaned_data['internetIPaddress']
+            if len(str(number_bo)) == 2:
+                number_bo_for_description = '0' + str(number_bo)
+            else:
+                number_bo_for_description = number_bo
+
+            if internetIPaddress != 'dhcp':
+                internetIPaddress_raw = internetIPaddress.split(' ')
+                internetIPaddress_without_mask = internetIPaddress_raw[:1]
+                for i in internetIPaddress_without_mask:
+                    internetIPaddress_without_mask = i
+            else:
+                internetIPaddress_without_mask = ''
+
+
+            context2 = {
+                        'Pat_geokod': configGenerateForm.cleaned_data['Pat_geokod'],
+                        'number_bo': configGenerateForm.cleaned_data['number_bo'],
+                        'PAT_inet_address': PAT_inet_address,
+                        'logicalAddressTunnel0': configGenerateForm.cleaned_data['logicalAddressTunnel0'],
+                        'physicalAddressTunnel0': configGenerateForm.cleaned_data['physicalAddressTunnel0'],
+                        'logicalAddressTunnel1': configGenerateForm.cleaned_data['logicalAddressTunnel1'],
+                        'interfaceISP1': configGenerateForm.cleaned_data['inetfaceISP1'],
+                        'interfaceInternet': configGenerateForm.cleaned_data['interfaceInternet'],
+                        'interfaceLAN': configGenerateForm.cleaned_data['interfaceLAN'],
+                        'internetProviderName': configGenerateForm.cleaned_data['internetProviderName'],
+                        'internetIPaddress': internetIPaddress,
+                        'defaultIPaddress': configGenerateForm.cleaned_data['defaultIPaddress'],
+                        'PatNumberForACL': configGenerateForm.cleaned_data['PatNumberForACL'],
+                        'namePAT': configGenerateForm.cleaned_data['namePAT'],
+                        'number_bo_for_description': number_bo_for_description,
+                        'internetIPaddress_without_mask': internetIPaddress_without_mask}
+            return render(request, 'config.html', context2)
+    context = {'configGenerateForm': configGenerateForm}
+    return render(request, 'config_generate.html', context)
 
 @login_required(login_url='/accounts/login/')
 def from_vlan_to_address(request, region_id, vlan_id):

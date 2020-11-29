@@ -7,16 +7,21 @@
 }
 
 
-
 body{
     background-color: #323d9939;
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
+
 caption{
     border-bottom: 5px solid maroon;
     font-size: 40px;
     margin-bottom: 3%;
+}
+
+label {
+    font-size: 0.9em;
+    font-weight:bold ;
 }
 
 .descriptions {
@@ -62,17 +67,6 @@ td {
     bottom: 50%;
 }
 
-#exitButton {
-    position: relative;
-    left: 96.5%;
-    bottom: 1.6em;
-    color: black;
-}
-
-#exitButton:hover {
-    color: white;
-}
-
 
 .tables {
     border: 3px solid black;
@@ -81,7 +75,13 @@ td {
 
 
 a {
+    color: black;
     text-decoration: none;
+}
+
+#extendedButtonBlock a:hover {
+    cursor: pointer;
+    color: white;
 }
 
 
@@ -212,3 +212,8 @@ select {
     transition: 0.7s;
     cursor: pointer;
 }
+
+#extendedButtonBlock {
+    position: relative;
+    top: -2.5em;
+    left: 50em;}

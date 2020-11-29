@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Config</title>
+</head>
+<body>
+        <div>
+            <p> hostname cr-rt01.csc{{ Pat_geokod }}{{ number_bo_for_description }}.{{ namePAT }} </p>
+            <p> username guest secret F!r$tLeve1 </p>
+            <p> username recovery privilege 15 secret L0$tC0nne(t </p>
+            <p> ip domain-name ent.ukrgas.com.ua     </p>
+            <p> ip name-server 10.20.128.3  </p>
+            <p> ip name-server 10.20.15.32 </p>
+            <p> ip name-server 10.26.15.32 </p>
+            <p> ip name-server 10.{{ Pat_geokod }}.15.32 </p>
+            <p> ip name-server 10.48.15.32 </p>
+            <p> enable secret N0Loc@1log!nToo </p>
+            <p> clock timezone EET 2 0 </p>
+            <p>clock summer-time EET recurring last Sun Mar 2:00 last Sun Oct 3:00</p>
+            <p>ntp server 10.20.255.250 prefer</p>
+            <p>ntp server 10.20.255.251 prefer </p>
+            <p>crypto key generate rsa modulus 2048</p>
+            <p>login block-for 300 attempts 3 within 60</p>
+            <p>login delay 5</p>
+            <p>login on-failure log</p>
+            <p>login on-success log </p>
+            <p>ip ssh version 2</p>
+            <p>ip ssh port 2252 rotary 52</p>
+            <p>ip ssh logging events</p>
+            <p>no ip http server</p>
+            <p>no ip http secure-server</p>
+            <p>aaa new-model</p>
+            <p>tacacs server SHO-ISE</p>
+            <p>address ipv4 10.20.14.136</p>
+            <p>key @BT0pu3@UuRT@(a($+</p>
+            <p>exit</p>
+            <p>ip tacacs source-interface Loopback0</p>
+            <p>aaa group server tacacs+ SHO-ISE </p>
+            <p>server name SHO-ISE </p>
+            <p>exit</p>
+            <p>aaa authentication login default group SHO-ISE local</p>
+            <p>aaa authorization exec default group SHO-ISE local </p>
+            <p>aaa accounting exec default start-stop group SHO-ISE</p>
+            <p>aaa accounting commands 1 default start-stop group SHO-ISE</p>
+            <p>aaa accounting commands 15 default start-stop group SHO-ISE </p>
+            <p>logging buffered 32000 informational </p>
+            <p>logging history size 250</p>
+            <p>logging source-interface Loopback0</p>
+            <p>logging host 10.20.14.11 </p>
+            <p>interface Loopback0</p>
+            <p>description Management Interface</p>
+            <p>ip address 10.{{ Pat_geokod }}.{{ number_bo }}.255 255.255.255.255</p>
+            <p>exit</p>
+            <p>access-list 14 permit 10.20.14.0 0.0.0.191</p>
+            <p>access-list 30 permit 10.20.130.36</p>
+            <p>access-list 30 permit 10.20.14.0 0.0.0.255 </p>
+            <p>snmp-server group HQ-IS-SNMP.grp v3 priv access 30</p>
+            <p>snmp-server group HQ-IT-TCS-SNMP.grp v3 priv access 14</p>
+            <p>snmp-server community HQ-IT-TCS RW 14</p>
+            <p>snmp-server community HQ-IS-SNMP RO 30</p>
+            <p>ip access-list extended VTY_acl</p>
+            <p>deny tcp any any eq 22 telnet </p>
+            <p>remark -------- HQ&RDC&CC [Mng;IT] </p>
+            <p>permit ip 10.20.0.0  0.0.0.255 any</p>
+            <p>permit ip 10.20.14.0 0.0.0.191 any</p>
+            <p>remark -------- HQ Tech Servers</p>
+            <p>permit ip 10.20.15.72    0.0.0.0 any</p>
+            <p>permit ip 10.20.128.152  0.0.0.7 any</p>
+            <p>permit ip 10.20.130.8    0.0.0.0 any </p>
+            <p>remark -------- WAN-ENT Tunnels</p>
+            <p>permit ip 10.252.55.200 0.3.0.7  any</p>
+            <p>permit ip 10.252.55.218 0.1.0.1  any </p>
+            <p>remark -------- INET[HQ;RDC;CC;RDCC]</p>
+            <p>permit ip 46.164.130.240 0.0.0.7  any </p>
+            <p>permit ip 46.164.137.224 0.0.0.15 any </p>
+            <p>permit ip 46.164.139.32  0.0.0.7  any</p>
+            <p>permit ip 46.164.142.112 0.0.0.7  any </p>
+            <p>permit ip 46.164.144.72  0.0.0.7  any</p>
+            <p>permit ip 89.162.145.0   0.0.0.15 any</p>
+            <p>permit ip 93.183.195.208 0.0.0.7  any</p>
+            <p>remark -------- PAO [Mng;IT]</p>
+            <p>permit ip 10.{{ Pat_geokod }}.0.0  0.0.0.63  any</p>
+            <p>permit ip 10.{{ Pat_geokod }}.14.0    0.0.0.31  any</p>
+            <p>remark -------- PAO Tech Server</p>
+            <p>permit ip 10.{{ Pat_geokod }}.15.73   0.0.0.0   any</p>
+            <p>remark -------- WAN-Filial Channels</p>
+            <p>permit ip 172.16.{{ Pat_geokod }}.254 0.1.0.0   any</p>
+            <p>remark -------- INET[PAO]</p>
+            {% for inet_adress in PAT_inet_address %}
+                {% if defaultIPaddress == 'dhcp' or defaultIPaddress == 'DHCP' %}
+                    <p>permit tcp {{ inet_adress }} 0.0.0.0 any eq 22 22{{ number_bo }}</p>
+                {% else %}
+                    <p>permit tcp {{ inet_adress }} 0.0.0.0 {{ internetIPaddress_without_mask }} 0.0.0.0 eq 22 22{{ number_bo }}</p>
+                {% endif %}
+            {% endfor %}
+            <p>remark -------- Local</p>
+            <p>permit ip 10.{{ Pat_geokod }}.254.0  0.0.0.7 any</p>
+            <p>exit</p>
+            <p>line vty 0 15</p>
+            <p>access-class VTY_acl in</p>
+            <p>exec-timeout 15 0</p>
+            <p>logging synchronous</p>
+            <p>rotary 52</p>
+            <p>length 0</p>
+            <p>transport prefered ssh</p>
+            <p>transport input ssh</p>
+            <p>exit</p>
+            <p>ip ftp source-interface Loopback0</p>
+            <p>ip tftp source-interface Loopback0</p>
+            <p>ip ftp username dev.{{ namePAT }}.csc{{ Pat_geokod }}{{ number_bo_for_description }}.cr-rt01</p>
+            <p>ip ftp password 7 143F3D1C0D0A7972707D72</p>
+            <p>archive</p>
+            <p>log config</p>
+            <p>logging enable</p>
+            <p>logging size 1000</p>
+            <p>hidekeys</p>
+            <p>exit</p>
+            <p>path ftp://bkp-sv01/cr-rt01.csc{{ Pat_geokod }}{{ number_bo_for_description }}.{{ namePAT }}_</p>
+            <p>exit</p>
+            <p>kron occurrence Backup-replica at 23:00 recurring</p>
+            <p>policy-list Backup-replica_pl</p>
+            <p>exit</p>
+            <p>kron policy-list Backup-replica_pl</p>
+            <p>cli copy running-config tftp://bkp-sv01/configs-{{ namePAT }}-replica/{{ namePAT }}.csc{{ Pat_geokod }}{{ number_bo_for_description }}.cr-rt01/cr-rt01.csc{{ Pat_geokod }}{{ number_bo_for_description }}.{{ namePAT }}.txt</p>
+            <p>exit</p>
+            <p>ip dhcp excluded-address 10.{{ Pat_geokod }}.{{ number_bo }}.1 10.{{ Pat_geokod }}.{{ number_bo }}.10</p>
+            <p>ip dhcp excluded-address 10.{{ Pat_geokod }}.{{ number_bo }}.129 10.{{ Pat_geokod }}.{{ number_bo }}.135</p>
+            <p>ip dhcp excluded-address 10.{{ Pat_geokod }}.{{ number_bo }}.161</p>
+            <p>ip dhcp pool LAN_dhcppool</p>
+            <p>network 10.{{ Pat_geokod }}.{{ number_bo }}.0 255.255.255.192</p>
+            <p>default-router 10.{{ Pat_geokod }}.{{ number_bo }}.1</p>
+            <p>dns-server 10.48.15.32 10.20.128.3 10.48.15.33 10.20.15.32</p>
+            <p>exit</p>
+            <p>ip dhcp pool Guest_dhcppool</p>
+            <p>network 10.{{ Pat_geokod }}.{{ number_bo }}.128 255.255.255.224</p>
+            <p>default-router 10.{{ number_bo }}.{{ Pat_geokod }}.129</p>
+            <p>dns-server 8.8.8.8 8.8.4.4</p>
+            <p>lease 0 1 </p>
+            <p>exit</p>
+            <p>ip dhcp pool VoIP_dhcppool</p>
+            <p>network 10.{{ Pat_geokod }}.{{ number_bo }}.160 255.255.255.240</p>
+            <p>default-router 10.{{ Pat_geokod }}.{{ number_bo }}.161</p>
+            <p>option 66 ascii tftp://10.48.20.10/{MAC}.cfg</p>
+            <p>option 150 ip 10.48.20.10</p>
+            <p>exit</p>
+            <p>crypto isakmp policy 10</p>
+            <p>encr aes 256 </p>
+            <p>authentication pre-share</p>
+            <p>group 2</p>
+            <p>exit</p>
+            <p>crypto ipsec transform-set aes128-sha_TS esp-aes esp-sha-hmac</p>
+            <p>mode tunnel</p>
+            <p>exit</p>
+            <p>crypto ipsec transform-set aes256-sha_TS esp-aes 256 esp-sha-hmac</p>
+            <p>mode tunnel</p>
+            <p>exit</p>
+            <p>crypto ipsec profile WAN-Ent1_IPSP</p>
+            <p>set transform-set aes128-sha_TS</p>
+            <p>exit</p>
+            <p>crypto ipsec profile WAN-Ent2_IPSP</p>
+            <p>set transform-set aes256-sha_TS</p>
+            <p>exit</p>
+            {% if logicalAddressTunnel0 %}
+                <p>interface Tunnel0 </p>
+                <p>description DMVPN Spoke WAN-ENT via WAN-ENT ISP1 'Datagroup'</p>
+                <p>bandwidth 2000</p>
+                <p>ip address {{ logicalAddressTunnel0 }} 255.255.252.0</p>
+                <p>no ip redirects</p>
+                <p>ip mtu 1400</p>
+                <p>ip flow ingress</p>
+                <p>ip flow egress</p>
+                <p>ip nhrp authentication WANEnt16</p>
+                <p>ip nhrp map multicast 172.16.1.2</p>
+                <p>ip nhrp map 10.252.55.202 172.16.1.2</p>
+                <p>ip nhrp map multicast 172.16.1.3</p>
+                <p>ip nhrp map 10.252.55.203 172.16.1.3 </p>
+                <p>ip nhrp map multicast 172.16.1.4</p>
+                <p>ip nhrp map 10.252.55.204 172.16.1.4</p>
+                <p>ip nhrp map multicast 172.16.1.5 </p>
+                <p>ip nhrp map 10.252.55.205 172.16.1.5</p>
+                <p>ip nhrp map multicast 172.16.1.6</p>
+                <p>ip nhrp map 10.252.55.206 172.16.1.6</p>
+                <p>ip nhrp map multicast 172.16.1.7</p>
+                <p>ip nhrp map 10.252.55.207 172.16.1.7 </p>
+                <p>ip nhrp network-id 1721600</p>
+                <p>ip nhrp holdtime 360</p>
+                <p>ip nhrp nhs 10.252.55.202 priority 4 </p>
+                <p>ip nhrp nhs 10.252.55.203 priority 5</p>
+                <p>ip nhrp nhs 10.252.55.204 priority 2</p>
+                <p>ip nhrp nhs 10.252.55.205 priority 3</p>
+                <p>ip nhrp nhs 10.252.55.207 priority 1</p>
+                <p>ip nhrp nhs 10.252.55.206</p>
+                <p>ip ospf authentication message-digest</p>
+                <p>ip ospf message-digest-key 1 md5 7 122E25395F0E02107B7C7679656572</p>
+                <p>ip ospf network broadcast</p>
+                <p>ip ospf priority 0</p>
+                <p>ip ospf cost 600</p>
+                <p>load-interval 30</p>
+                <p>tunnel source {{ physicalAddressTunnel0 }}</p>
+                <p>tunnel mode gre multipoint</p>
+                <p>tunnel key 172160021</p>
+                <p>tunnel path-mtu-discovery</p>
+                <p>tunnel protection ipsec profile WAN-Ent1_IPSP</p>
+                <p>exit</p>
+            {% endif %}
+            {% if logicalAddressTunnel1 %}
+                <p>interface Tunnel4</p>
+                <p>description DMVPN Spoke WAN-ENT via Internet ISP1 '{{ internetProviderName }}'</p>
+                <p>bandwidth 2000</p>
+                <p>ip address {{ logicalAddressTunnel1 }} 255.255.252.0</p>
+                <p>no ip redirects </p>
+                <p>ip mtu 1400 </p>
+                <p>ip flow ingress</p>
+                <p>ip flow egress</p>
+                <p>ip nhrp authentication WANEntI4 </p>
+                <p>ip nhrp map multicast 46.164.144.77</p>
+                <p>ip nhrp map 10.254.55.207 46.164.144.77</p>
+                <p>ip nhrp map multicast 46.164.144.76 </p>
+                <p>ip nhrp map 10.254.55.206 46.164.144.76</p>
+                <p>ip nhrp network-id 10254520</p>
+                <p>ip nhrp holdtime 360 </p>
+                <p>ip nhrp nhs 10.254.55.206 priority 1</p>
+                <p>ip nhrp nhs 10.254.55.207 </p>
+                <p>ip tcp adjust-mss 1360</p>
+                <p>ip ospf authentication message-digest</p>
+                <p>ip ospf message-digest-key 1 md5 7 053C272104627A48170003435B5E517E</p>
+                <p>ip ospf network point-to-multipoint non-broadcast </p>
+                <p>ip ospf cost 500</p>
+                <p>tunnel source {{ interfaceInternet }}</p>
+                <p>tunnel mode gre multipoint</p>
+                <p>tunnel key 1025452022 </p>
+                <p>tunnel path-mtu-discovery</p>
+                <p>tunnel protection ipsec profile WAN-Ent2_IPSP </p>
+            <p>exit</p>
+            {% endif %}
+            <p>router ospf 300</p>
+            <p>router-id 10.{{ Pat_geokod }}.{{ number_bo }}.255</p>
+            <p>area {{ Pat_geokod }}{{ number_bo_for_description }} range 10.{{ Pat_geokod }}.{{ number_bo }}.0 255.255.255.0</p>
+            <p>passive-interface default </p>
+            {% if logicalAddressTunnel0 %}
+                <p>no passive-interface Tunnel0 </p>
+            {% endif %}
+            {% if logicalAddressTunnel1 %}
+                <p>no passive-interface Tunnel4 </p>
+            {% endif %}
+            <p>network 10.{{ Pat_geokod }}.{{ number_bo }}.0 0.0.0.255 area {{ ospfAres }} </p>
+            {% if logicalAddressTunnel0 %}
+                <p>network 10.252.52.0 0.0.3.255 area 0</p>
+            {% endif %}
+            {% if logicalAddressTunnel1 %}
+                <p>network 10.254.52.0 0.0.3.255 area 0</p>
+                <p>neighbor 10.254.55.207 cost 500 </p>
+                <p>neighbor 10.254.55.206 cost 550 </p>
+            {% endif %}
+            <p>exit</p>
+            <p>ip access-list standard WE-ISP1_in</p>
+            <p>remark -------- SHO-TECH01(reserv) </p>
+            <p>permit 10.20.15.72</p>
+            <p>deny   172.16.1.45 </p>
+            <p>deny   172.16.1.39</p>
+            <p>deny   172.16.1.30 </p>
+            <p>remark ------- VN</p>
+            <p>permit 172.16.1.21</p>
+            <p>remark ------- HQ</p>
+            <p>permit 172.16.1.2 0.0.0.1</p>
+            <p>remark ------- RDC,CC </p>
+            <p>permit 172.16.1.4 0.0.0.3</p>
+            <p>remark ------- VL,DP</p>
+            <p>permit 172.16.1.22 0.0.0.1</p>
+            <p>deny   172.16.1.28 0.0.0.1</p>
+            <p>remark ------- ZT,ZK,ZP,IF,MK</p>
+            <p>permit 172.16.1.24 0.0.0.7 </p>
+            <p>deny   172.16.1.46 0.0.0.1 </p>
+            <p>remark ------- RV,SM,KM,CN,CV,DPG,KHG,KH,KR,LV,KV</p>
+            <p>permit 172.16.1.32 0.0.0.15 </p>
+            <p>remark -------- HQ Management,IT</p>
+            <p>permit 10.20.14.0 0.0.0.191</p>
+            <p>permit 10.20.0.0 0.0.0.255 </p>
+            <p>remark -------- CSC,RDCC,hRDC</p>
+            <p>permit 172.16.0.0 0.0.3.255</p>
+            <p>permit 172.16.4.0 0.0.1.255</p>
+            <p>deny   172.16.5.128 0.0.0.127</p>
+            <p>remark -------- For Datagroup Test</p>
+            <p>permit 172.16.1.60 0.0.0.1 </p>
+            <p>exit</p>
+            {% if logicalAddressTunnel0 %}
+                <p>vlan 301</p>
+                <p>name WAN-ENT_ISP1</p>
+                <p>exit</p>
+                <p>interface Vlan301</p>
+                <p>description WAN-ENT ISP1 'Datagroup'</p>
+                <p>ip address {{ physicalAddressTunnel0 }} 255.255.248.0</p>
+                <p>ip access-group WE-ISP1_in in</p>
+                <p>ip flow ingress</p>
+                <p>ip flow egress</p>
+                <p>exit</p>
+                <p>interface {{ interfaceISP1 }}</p>
+                <p>description ISP 'DataGroup' [WAN-ENT]</p>
+                <p>switchport access vlan 301 </p>
+                <p>no ip address</p>
+                <p>exit</p>
+            {% endif %}
+            <p>ip access-list extended NAT_acl</p>
+            <p>permit ip 10.{{ Pat_geokod }}.{{ number_bo }}.0 0.0.0.255 any</p>
+            <p>ip nat inside source list NAT_acl interface {{ interfaceInternet }} overload</p>
+            <p>ip access-list extended InetISP1_acl_in</p>
+            <p>permit tcp any any established</p>
+            <p>remark ---------- Tunnels [CC]</p>
+            <p>permit esp 46.164.144.76 0.0.0.1 any</p>
+            <p>permit udp 46.164.144.76 0.0.0.1 any eq isakmp non500-isakmp</p>
+            <p>remark -------------------------------------------------- </p>
+            <p>permit icmp any any echo-reply</p>
+            <p>permit icmp any any unreachable</p>
+            <p>permit icmp any any time-exceeded </p>
+            <p>permit udp any eq domain bootps bootpc ntp isakmp non500-isakmp any</p>
+            <p>remark ---------- HQ,RDC,CC</p>
+            <p>permit icmp 46.164.130.240 0.0.0.7 any</p>
+            <p>permit icmp 46.164.137.224 0.0.0.15 any</p>
+            <p>permit icmp 46.164.139.32 0.0.0.7 any </p>
+            <p>permit icmp 46.164.142.112 0.0.0.7 any</p>
+            <p>permit icmp 46.164.144.72 0.0.0.7 any</p>
+            <p>permit icmp 62.244.15.216 0.0.0.7 any</p>
+            <p>permit icmp 89.162.145.0 0.0.0.15 any</p>
+            <p>permit icmp 93.183.195.208 0.0.0.7 any</p>
+            <p>permit tcp 46.164.130.240 0.0.0.7 any eq 22 2252</p>
+            <p>permit tcp 46.164.137.224 0.0.0.15 any eq 22 2252</p>
+            <p>permit tcp 46.164.139.32 0.0.0.7 any eq 22 2252</p>
+            <p>permit tcp 46.164.142.112 0.0.0.7 any eq 22 2252</p>
+            <p>permit tcp 46.164.144.72 0.0.0.7 any eq 22 2252</p>
+            <p>permit tcp 62.244.15.216 0.0.0.7 any eq 22 2252</p>
+            <p>permit tcp 89.162.145.0 0.0.0.15 any eq 22 2252</p>
+            <p>permit tcp 93.183.195.208 0.0.0.7 any eq 22 2252 </p>
+            <p>remark ---------- PAO </p>
+            {% for inet_adress in PAT_inet_address %}
+                {% if defaultIPaddress == 'dhcp' or defaultIPaddress == 'DHCP' %}
+                    <p>permit tcp {{ inet_adress }} 0.0.0.0 any eq 22 2252</p>
+                {% else %}
+                    <p>permit tcp {{ inet_adress }} 0.0.0.0 {{ internetIPaddress_without_mask }} 0.0.0.0 eq 22 2252</p>
+                {% endif %}
+            {% endfor %}
+            <p>exit</p>
+            {% if interfaceInternet %}
+                <p>interface {{ interfaceInternet }}</p>
+                <p>description ISP '{{ internetProviderName }}'[Internet]</p>
+                <p>ip address {{ internetIPaddress }}</p>
+                <p>ip access-group InetISP1_acl_in in</p>
+                <p>ip nat outside</p>
+                <p>ip virtual-reassembly in</p>
+                <p>ip flow ingress</p>
+                <p>ip flow egress</p>
+                <p>duplex auto</p>
+                <p>speed auto </p>
+                <p>exit</p>
+            {% endif %}
+            <p>ip route 0.0.0.0 0.0.0.0 {{ defaultIPaddress }}</p>
+            <p>vlan 10</p>
+            <p>name Users</p>
+            <p>exit</p>
+            <p>vlan 25</p>
+            <p>name Servers</p>
+            <p>exit</p>
+            <p>vlan 30</p>
+            <p>name VoIP</p>
+            <p>exit</p>
+            <p>vlan 33</p>
+            <p>name Guest</p>
+            <p>exit</p>
+            <p>vlan 111</p>
+            <p>name Management </p>
+            <p>exit</p>
+            <p>ip access-list extended LAN_acl_in</p>
+            <p>permit tcp any any established</p>
+            <p>permit udp any 10.0.0.0 0.63.255.255</p>
+            <p>permit ip any 10.20.0.0 0.0.255.255</p>
+            <p>permit ip any 10.{{ PatNumberForACL }}.0.0 0.0.255.255</p>
+            <p>permit ip any 10.48.0.0 0.0.255.255</p>
+            <p>permit ip any 10.{{ Pat_geokod }}.{{ number_bo }}.0 0.0.0.255 </p>
+            <p>permit icmp any any</p>
+            <p>deny   ip any 10.0.0.0 0.255.255.255</p>
+            <p>permit udp host 0.0.0.0 eq bootpc host 255.255.255.255 eq bootps</p>
+            <p>remark ---------- INTERNET</p>
+            <p>remark ---------------- RGC</p>
+            <p>remark ------------------------ RDC</p>
+            <p>permit ip any 46.164.130.240 0.0.0.7</p>
+            <p>permit ip any 46.164.137.224 0.0.0.15</p>
+            <p>permit ip any 46.164.142.144 0.0.0.7</p>
+            <p>permit ip any 89.162.145.0 0.0.0.15</p>
+            <p>remark ------------------------ HQ</p>
+            <p>permit ip any 46.164.142.112 0.0.0.7</p>
+            <p>permit ip any 62.244.61.24 0.0.0.7</p>
+            <p>permit ip any 93.183.195.208 0.0.0.7</p>
+            <p>remark ------------------------ CC</p>
+            <p>permit ip any 46.164.139.32 0.0.0.7</p>
+            <p>permit ip any 46.164.144.72 0.0.0.7</p>
+            <p>permit ip any 62.244.15.216 0.0.0.7</p>
+            <p>exit</p>
+            <p>ip access-list extended LAN_acl_out </p>
+            <p>permit tcp any any established</p>
+            <p>permit udp 10.0.0.0 0.63.255.255 any</p>
+            <p>permit ip 10.20.0.0 0.0.255.255 any </p>
+            <p>permit ip 10.{{ PatNumberForACL }}.14.0 0.0.1.255 any</p>
+            <p>permit ip 10.{{ Pat_geokod }}.{{ number_bo }}.0 0.0.0.255 any</p>
+            <p>permit icmp 10.0.0.0 0.255.255.255 any</p>
+            <p>permit icmp any any echo-reply</p>
+            <p>permit icmp any any unreachable</p>
+            <p>permit icmp any any time-exceeded</p>
+            <p>exit</p>
+            <p>ip access-list extended VoIP_acl_in</p>
+            <p>permit udp any 10.0.0.0 0.63.255.255</p>
+            <p>permit tcp any any established</p>
+            <p>remark ---------- VoIP Signaling, Media and Other</p>
+            <p>permit ip any host 10.48.20.10</p>
+            <p>remark -------------------------------------------------- </p>
+            <p>permit icmp any 10.0.0.0 0.255.255.255</p>
+            <p>permit udp host 0.0.0.0 eq bootpc host 255.255.255.255 eq bootps </p>
+            <p>exit</p>
+            <p>ip access-list extended VoIP_acl_out</p>
+            <p>permit tcp any any established </p>
+            <p>permit udp 10.0.0.0 0.63.255.255 any</p>
+            <p>remark ---------- Management, IT TCS </p>
+            <p>permit ip 10.20.14.0 0.0.0.191 any </p>
+            <p>permit ip host 10.20.30.220 any</p>
+            <p>permit ip 10.{{ PatNumberForACL }}.14.0 0.0.0.159 any</p>
+            <p>remark ---------- VoIP Signaling, Media and Other</p>
+            <p>permit ip host 10.48.20.10 any</p>
+            <p>remark -------------------------------------------------- </p>
+            <p>permit icmp 10.0.0.0 0.255.255.255 any</p>
+            <p>permit icmp any any echo-reply</p>
+            <p>permit icmp any any unreachable</p>
+            <p>permit icmp any any time-exceeded</p>
+            <p>exit</p>
+            <p>ip access-list extended MngLAN_acl_in</p>
+            <p>permit tcp any any established</p>
+            <p>permit ip any 10.20.0.0 0.0.0.255</p>
+            <p>permit ip any 10.20.14.0 0.0.0.191</p>
+            <p>permit ip any host 10.20.15.72 </p>
+            <p>permit ip any host 10.20.130.36</p>
+            <p>permit ip any host 10.20.130.40</p>
+            <p>remark ---------- WiFi Controller,NTP</p>
+            <p>permit ip any host 10.48.15.51</p>
+            <p>permit udp any 10.20.255.128 0.0.0.127</p>
+            <p>permit udp any 10.48.255.128 0.0.0.127</p>
+            <p>remark --------------------------------------------------</p>
+            <p>permit icmp any 10.0.0.0 0.63.255.255</p>
+            <p>permit udp host 0.0.0.0 eq bootpc host 255.255.255.255 eq bootps</p>
+            <p>exit</p>
+            <p>ip access-list extended MngLAN_acl_out</p>
+            <p>permit tcp any any established</p>
+            <p>permit udp host 10.55.74.241 eq bootps any eq bootpc</p>
+            <p>remark ---------- WiFi Controller,NTP</p>
+            <p>permit udp host 10.48.15.51 any</p>
+            <p>permit udp 10.20.255.128 0.0.0.127 any </p>
+            <p>permit udp 10.48.255.128 0.0.0.127 any</p>
+            <p>remark ---------- Management,IT </p>
+            <p>permit ip 10.20.0.0 0.0.0.255 any</p>
+            <p>permit ip 10.20.14.0 0.0.0.191 any</p>
+            <p>permit ip host 10.20.15.72 any</p>
+            <p>permit ip host 10.20.130.40 any</p>
+            <p>deny   ip 172.16.1.0 0.0.0.1 any </p>
+            <p>permit ip 172.16.1.0 0.0.0.7 any</p>
+            <p>permit ip 10.252.55.200 0.3.0.7 any</p>
+            <p>remark ---------- PAO</p>
+            <p>permit ip 10.{{ PatNumberForACL }}.0.0 0.0.0.63 any</p>
+            <p>permit ip 10.{{ PatNumberForACL }}.14.0 0.0.0.159 any</p>
+            <p>remark --------------------------------------------------</p>
+            <p>permit icmp 10.0.0.0 0.63.255.255 any</p>
+            <p>permit icmp any any echo-reply</p>
+            <p>permit icmp any any unreachable</p>
+            <p>permit icmp any any time-exceeded</p>
+            <p>exit</p>
+            <p>interface Vlan10 </p>
+            <p>description Users </p>
+            <p>ip address 10.{{ Pat_geokod }}.{{ number_bo }}.1 255.255.255.192</p>
+            <p>ip access-group LAN_acl_in in </p>
+            <p>ip access-group LAN_acl_out out </p>
+            <p>ip flow ingress</p>
+            <p>ip flow egress</p>
+            <p>ip nat inside</p>
+            <p>ip virtual-reassembly in</p>
+            <p>exit</p>
+            <p>interface Vlan30</p>
+            <p>description VoIP</p>
+            <p>ip address 10.{{ Pat_geokod }}.{{ number_bo }}.161 255.255.255.240</p>
+            <p>ip access-group VoIP_acl_in in</p>
+            <p>ip access-group VoIP_acl_out out</p>
+            <p>ip flow ingress</p>
+            <p>ip flow egress</p>
+            <p>exit</p>
+            <p>interface Vlan33</p>
+            <p>description Guest </p>
+            <p>ip address 10.{{ Pat_geokod }}.{{ number_bo }}.129 255.255.255.224</p>
+            <p>ip flow ingress</p>
+            <p>ip flow egress</p>
+            <p>ip nat inside</p>
+            <p>ip virtual-reassembly in</p>
+            <p>exit</p>
+            <p>interface Vlan111</p>
+            <p>description Management VLAN Interface</p>
+            <p>ip address 10.{{ Pat_geokod }}.{{ number_bo }}.241 255.255.255.248</p>
+            <p>ip access-group MngLAN_acl_in in</p>
+            <p>ip access-group MngLAN_acl_out out</p>
+            <p>ip flow ingress</p>
+            <p>ip flow egress</p>
+            <p>exit</p>
+            {% if interfaceLAN %}
+                <p>interface {{ interfaceLAN }}</p>
+                <p>description LAN1</p>
+                <p>switchport mode trunk</p>
+                <p>switchport trunk native vlan 111</p>
+                <p>no ip address</p>
+                <p>exit</p>
+            {% endif %}
+            <p>spanning-tree vlan 10 priority 4096</p>
+            <p>spanning-tree vlan 25 priority 4096</p>
+            <p>spanning-tree vlan 30 priority 4096</p>
+            <p>spanning-tree vlan 33 priority 4096</p>
+            <p>crypto isakmp key CSC!net10254&52#0!kEkEY address 46.164.144.76 255.255.255.254</p>
+            <p>crypto isakmp key ent!$P117216#0$0!kEkEY address 172.16.0.0 255.255.248.0</p>
+            <p>crypto isakmp invalid-spi-recovery</p>
+            <p>crypto isakmp keepalive 10</p>
+            <p>exit</p>
+        </div>
+</body>
+</html>

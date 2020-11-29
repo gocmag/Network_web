@@ -31,7 +31,10 @@
         <form method="get" id="searchForm" action="{% url "search_view" %} ">
             <input type="search" id="q" name="q">
         </form>
-        <a id="exitButton" href="{% url 'logout' %}"> Выйти </a>
+        <div id="extendedButtonBlock">
+            <a href="{% url 'configGenerate' %}"> Генератор конфига </a> /
+            <a id="exitButton" href="{% url 'logout' %}"> Выйти </a>
+        </div>
     </div>
 
     {% block content %}
