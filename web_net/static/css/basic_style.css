@@ -216,4 +216,6 @@ select {
 #extendedButtonBlock {
     position: relative;
     top: -2.5em;
-    left: 50em;}
+    left: 50em;
+    width: 15em;
+}

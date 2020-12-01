@@ -25,17 +25,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2119efe-a0ac-422f-8e97-77b5e316505c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web_net/static/css/config_generate_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/templates/admin/web_net/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/templates/config.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_net/templates/config_generate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/web_net/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/web_net/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_net/static/css/basic_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/basic_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/static/css/region_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/static/css/region_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_net/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_net/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,7 +296,9 @@
       <workItem from="1606570315989" duration="2124000" />
       <workItem from="1606581222088" duration="5265000" />
       <workItem from="1606645538453" duration="10784000" />
-      <workItem from="1606674947137" duration="3199000" />
+      <workItem from="1606674947137" duration="3396000" />
+      <workItem from="1606720500156" duration="614000" />
+      <workItem from="1606810003536" duration="618000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлен переход из VLAN в Address">
       <created>1595147389896</created>
