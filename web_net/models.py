@@ -1,6 +1,7 @@
 from django.db import models
 from netfields import InetAddressField, NetManager
 import ipaddress
+from django.core.validators import RegexValidator
 
 class Region(models.Model):
     region_type = [
@@ -107,22 +108,6 @@ class VPN (models.Model):
         return str(self.pool)
 
 
-class Adress(models.Model):
-    id = models.AutoField(primary_key=True)
-    ip_address = models.GenericIPAddressField(null=False, blank=False, unique=True)
-    description = models.CharField(max_length=200, null=True, blank=False)
-    network_reletionship = models.ForeignKey(Networks, on_delete=models.CASCADE, null=True, blank=False)
-    vpnPool_reletionship = models.ForeignKey(VPN, on_delete=models.CASCADE, null=True, blank=True)
-    arrow_image = models.CharField(max_length=100, default='/static/Photo/Arrow.png')
-
-    class Meta:
-        ordering = ('ip_address',)
-
-    def __str__(self):
-        return self.ip_address
-
-
-
 class PAT (models.Model):
     geokod = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=10, null=False, blank=False)
@@ -134,3 +119,63 @@ class PAT (models.Model):
     def __str__(self):
         return self.name
 
+
+class TestDB (models.Model):
+    id = models.AutoField(primary_key=True)
+    network = models.CharField(max_length=50, validators=[RegexValidator(
+        regex='^(([1-9]|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.)(([0-9]|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){2}([0-9]|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\/([1-9]|[1-2]\d|3[0-2])$',
+        message='Неверный формат сети',
+        code='invalid network'
+    )])
+    network_binary = models.BigIntegerField(blank=True, null=True)
+
+    class Meta:
+        ordering = ('network_binary',)
+
+
+    def save(self, *args, **kwargs):
+        super(TestDB, self).save(*args, **kwargs)
+        #Блок проверки от промаха
+        network_data = self.network
+        correct_network_data_raw = ipaddress.ip_interface(network_data)
+        correct_network_data = correct_network_data_raw.network
+        self.network = correct_network_data
+
+        #Переменные
+        current_object = TestDB.objects.get(id=self.id)
+        network = ipaddress.IPv4Network(self.network)
+        subnet = ipaddress.ip_network(self.network)
+        ip_adresses = list(subnet.hosts())
+
+        #Блок создание идентификатор для сортировки сетей
+        for address in network:
+            network_binary = bin(int(address))
+            finaly_network_bynary = int(network_binary, 2)
+            self.network_binary = finaly_network_bynary
+            break
+        #Блок создания ip-адресов
+        for ip_adress in ip_adresses:
+            ip_adress = str(ip_adress)
+            adress_object = Adress(ip_address=ip_adress)
+            adress_object.testDB_reletionship = current_object
+            adress_object.save()
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.network)
+
+
+class Adress(models.Model):
+    id = models.AutoField(primary_key=True)
+    ip_address = models.GenericIPAddressField(null=False, blank=False, unique=True)
+    description = models.CharField(max_length=200, null=True, blank=False)
+    network_reletionship = models.ForeignKey(Networks, on_delete=models.CASCADE, null=True, blank=False)
+    vpnPool_reletionship = models.ForeignKey(VPN, on_delete=models.CASCADE, null=True, blank=True)
+    testDB_reletionship = models.ForeignKey(TestDB, on_delete=models.CASCADE, null=True, blank=False)
+
+    class Meta:
+        ordering = ('ip_address',)
+
+    def __str__(self):
+        return self.ip_address
