@@ -39,7 +39,7 @@ class NetworkForm(forms.ModelForm):
 
     class Meta:
         model = Networks
-        fields = '__all__'
+        exclude = ['network_binary',]
 
 class RegionForm(forms.ModelForm):
     class Meta:
