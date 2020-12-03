@@ -75,9 +75,10 @@ td {
 
 
 a {
-    color: black;
     text-decoration: none;
 }
+
+
 
 #extendedButtonBlock a:hover {
     cursor: pointer;

@@ -8,6 +8,7 @@ from .forms import NetworkForm, RegionForm, VlanForm, ipaddressForm, changeNetwo
     addClassNetwork, addConfigGenerate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .functions import binary
 
 defaultValue = '---'
 
@@ -165,7 +166,7 @@ def address(request, region_id, network_id):
             correct_network_data = correct_network_data_raw.network
             correct_network.network = correct_network_data
 
-            current_network_objects.update(network=correct_network_data)
+            current_network_objects.update(network=correct_network_data, network_binary=binary(correct_network_data))
 
             messages.success(request, f"Сеть {current_network} изменена на сеть {correct_network_data}")
             return resetPage
@@ -257,7 +258,7 @@ def vpnPoolAddress(requst, vpn_id):
             correct_network_data = correct_network_data_raw.network
             correct_network.network = correct_network_data
 
-            network_objects.update(pool=correct_network_data)
+            network_objects.update(pool=correct_network_data, network_binary=binary(correct_network_data))
 
             messages.success(requst, f"Сеть {network_object_pool} изменена на сеть {correct_network_data}")
             return resetPage
@@ -340,7 +341,8 @@ def changeClassNetwork(request):
         objectId = request.POST['objectId']
         newClassNetwork = request.POST['newClassNetwork']
         classNetworkObject = ClassNetwork.objects.filter(id=objectId)
-        classNetworkObject.update(network=newClassNetwork)
+        network = ipaddress.IPv4Network(newClassNetwork)
+        classNetworkObject.update(network=newClassNetwork, network_binary=binary(network))
         response = {'newClassNetwork': newClassNetwork}
         return JsonResponse(response)
 

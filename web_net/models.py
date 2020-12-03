@@ -131,6 +131,8 @@ class Networks(models.Model):
 
         super().save(*args, **kwargs)
 
+
+
     def __str__(self):
         return str(self.network)
 
@@ -255,13 +257,27 @@ class TestDB (models.Model):
 class Adress(models.Model):
     id = models.AutoField(primary_key=True)
     ip_address = models.GenericIPAddressField(null=False, blank=False, unique=True)
+    network_binary = models.BigIntegerField(blank=True, null=True)
     description = models.CharField(max_length=200, null=True, blank=False)
     network_reletionship = models.ForeignKey(Networks, on_delete=models.CASCADE, null=True, blank=False)
     vpnPool_reletionship = models.ForeignKey(VPN, on_delete=models.CASCADE, null=True, blank=True)
     testDB_reletionship = models.ForeignKey(TestDB, on_delete=models.CASCADE, null=True, blank=False)
 
     class Meta:
-        ordering = ('ip_address',)
+        ordering = ('network_binary',)
+
+    def save(self, *args, **kwargs):
+        super(Adress, self).save(*args, **kwargs)
+
+        network = ipaddress.IPv4Network(self.ip_address)
+
+        for address in network:
+            network_binary = bin(int(address))
+            finaly_network_bynary = int(network_binary, 2)
+            self.network_binary = finaly_network_bynary
+            break
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.ip_address
